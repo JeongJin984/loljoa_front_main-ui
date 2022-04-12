@@ -1,0 +1,41 @@
+.logo {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    align-items: left;
+    cursor: pointer;
+    margin-right: -130px;
+}
+
+.logo:hover {
+    color :rgb(255, 255, 255);
+
+}
+
+.navbarWeb {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+
+}
+
+.links {
+    display: flex;
+}
+.navlink {
+    margin: 0 20px;
+    height: 24px;
+    list-style: none;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: bold;
+
+}
+.navlink a {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+}
+
+.navlink a:hover {
+    color: #838383;
+}
