@@ -3,7 +3,7 @@ node {
         checkout scm
     }
     stage('Build image') {
-        app = docker.build("loljoa/front-main-ui:0.0.1:SNAPSHOT")
+        app = docker.build("loljoa/front-main-ui:0.0.1-SNAPSHOT")
 
     }
     stage('Push image') {
