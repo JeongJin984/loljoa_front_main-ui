@@ -3,7 +3,7 @@ import produce from "immer";
 const initialState = {
 }
 
-const userReducer = (state = initialState, action) => {
+const bettingReducer = (state = initialState, action) => {
   return produce(state, draft => {
     switch (action.type) {
       default:
@@ -12,4 +12,4 @@ const userReducer = (state = initialState, action) => {
   })
 }
 
-export default userReducer;
+export default bettingReducer;

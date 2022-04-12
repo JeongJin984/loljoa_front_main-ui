@@ -3,13 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "dev": "cross-env NODE_ENV=dev next dev",
+    "build": "cross-env NODE_ENV=production next build",
+    "start": "cross-env NODE_ENV=production next start",
     "lint": "next lint"
   },
   "dependencies": {
     "axios": "^0.26.1",
+    "cross-env": "^7.0.3",
     "immer": "^9.0.12",
     "next": "12.1.4",
     "next-redux-wrapper": "^7.0.5",
