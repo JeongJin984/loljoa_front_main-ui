@@ -4,8 +4,7 @@ import React from "react";
 import {
     Button
 } from "semantic-ui-react"
-import BetLine from '../src/component/Betline';
-import BettingBar from '../src/component/Bettingbar';
+import BetLine from "../src/component/Betline";
 
 const Betting = () => {
     const router = useRouter();
@@ -31,9 +30,6 @@ const Betting = () => {
                         <h2>다음 주</h2>
                     </div>
                     <BetLine list={list} />
-                </div>
-                <div style={{ border: "solid", color: "blue", flex: 1, backgroundColor: "#242737" }}>
-                    <BettingBar />
                 </div>
             </div>
         </>
