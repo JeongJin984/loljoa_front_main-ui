@@ -4,7 +4,7 @@ import { createWrapper } from 'next-redux-wrapper'
 
 import rootReducer from '../reducer/root-reducer'
 import rootSaga from '../saga/root-saga'
-import {composeWithDevTools} from 'redux-devtools-extension'
+import { composeWithDevTools } from 'redux-devtools-extension'
 
 const bindMiddleware = (middleware) => {
     if (true) {

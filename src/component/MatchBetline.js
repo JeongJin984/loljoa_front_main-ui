@@ -1,9 +1,9 @@
 import styles from '../../styles/Betline.module.css';
 
-const BetLine = ({ list }) =>  {
+const BetLine = ({ list }) => {
   return (
     <div>
-      {list.map((item, i) => (
+      {list.match.map((item, i) => (
         <div key={i} className={styles.betlineWide}>
           <div className={styles.tournament}>{item.tournament}</div>
           <duv className={styles.matchup}>

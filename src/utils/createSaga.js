@@ -1,7 +1,7 @@
-import {call, put, takeLatest} from "redux-saga/effects";
+import { call, put, takeLatest } from "redux-saga/effects";
 import axios from "axios";
 
-axios.defaults.withCredentials=true
+axios.defaults.withCredentials = true
 
 const createSaga = (name, url, method) => {
     function eventAPI(action) {
@@ -10,7 +10,7 @@ const createSaga = (name, url, method) => {
             url: url,
             params: action.params,
             data: action.data,
-        }).then( res => res.data);
+        }).then(res => res.data);
     }
 
     const eventVar = function* event(action) {
@@ -22,7 +22,7 @@ const createSaga = (name, url, method) => {
                 plus: action.plus
             });
         } catch (error) {
-            yield put ({
+            yield put({
                 type: name + "_FAILURE",
                 error: error
             });

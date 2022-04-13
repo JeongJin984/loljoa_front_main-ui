@@ -1,5 +1,5 @@
 import produce from "immer";
-import {TEST_FAILURE, TEST_SUCCESS} from "../../config/event/eventName/test";
+import { TEST_FAILURE, TEST_SUCCESS } from "../../config/event/eventName/test";
 
 const initialState = {
   message: "Click!"

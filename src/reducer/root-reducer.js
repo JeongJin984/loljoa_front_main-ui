@@ -1,9 +1,10 @@
-import {HYDRATE} from 'next-redux-wrapper';
-import {combineReducers} from 'redux';
+import { HYDRATE } from 'next-redux-wrapper';
+import { combineReducers } from 'redux';
 
 import leagueReducer from './league-reducer';
 import modalReducer from "./modal-reducer";
 import bettingReducer from "./betting-reducer";
+import matchReducer from './match-reducer';
 
 const rootReducer = (state, action) => {
     switch (action.type) {
@@ -17,7 +18,8 @@ const rootReducer = (state, action) => {
             const combineReducer = combineReducers({
                 leagueReducer,
                 modalReducer,
-                bettingReducer
+                bettingReducer,
+                matchReducer
             });
             return combineReducer(state, action);
         }
