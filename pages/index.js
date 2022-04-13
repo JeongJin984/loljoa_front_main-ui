@@ -15,19 +15,13 @@ import { CALL_MATCH_REQUEST } from '../config/event/eventName/matchEvent';
 
 const Home = () => {
   const dispatch = useDispatch()
-  const match = useSelector(state => state.matchReducer)
+  const { matchData } = useSelector(state => state.matchReducer)
   const { message } = useSelector(state => state.leagueReducer)
   const onCLick = useCallback(() => {
     dispatch({
       type: TEST_REQUEST
     })
   }, [dispatch])
-
-
-  // const states = useSelector(state => state)
-
-  // console.log(state)
-  console.log(match)
 
   return (
     <div>
@@ -38,7 +32,7 @@ const Home = () => {
       </div>
       <Link href="/betting">
         <a>
-          <MatchBetline list={match} />
+          <MatchBetline matchData={matchData} />
         </a>
       </Link>
       <RanNumTest />
@@ -55,11 +49,11 @@ export const getServerSideProps = wrapper.getServerSideProps(store =>
     const cookie = req ? req.headers.cookie : '';
     Axios.defaults.headers.Cookie = '';
     Axios.defaults.withCredentials = true;
-    if (req) {
-      store.dispatch({
-        type: CALL_MATCH_REQUEST
-      })
-    }
+    // if (req) {
+    //   store.dispatch({
+    //     type: CALL_MATCH_REQUEST
+    //   })
+    // }
     store.dispatch(END);
     await store.sagaTask.toPromise();
   }
