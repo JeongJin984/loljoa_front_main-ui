@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 import { CALL_MATCH_REQUEST } from '../config/event/eventName/matchEvent';
 
 const Betting = () => {
-    const match = useSelector(state => state.matchReducer)
+    const { matchData } = useSelector(state => state.matchReducer)
 
     return (
         <>
@@ -17,7 +17,7 @@ const Betting = () => {
                     <div style={{ textAlign: "center", margin: "30px" }}>
                         <h2>오늘</h2>
                     </div>
-                    <MatchBetLine list={match} />
+                    <MatchBetLine matchData={matchData} />
                 </div>
                 <div style={{ border: "solid", color: "blue", flex: 1, backgroundColor: "#242737" }}>
                     <BettingTab />
