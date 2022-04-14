@@ -2,10 +2,7 @@
 import Axios from 'axios';
 import { useCallback, useState } from 'react'
 import Link from 'next/link';
-import RanNumTest from '../src/component/RanNumTest';
-import MatchTest from '../src/component/MatchTest';
 import MatchBetline from '../src/component/MatchBetline';
-import Betline from '../src/component/Betline'
 import wrapper from "../src/store/store-wrapper";
 import { END } from "redux-saga";
 import { useDispatch, useSelector } from 'react-redux';
@@ -35,9 +32,6 @@ const Home = () => {
           <MatchBetline matchData={matchData} />
         </a>
       </Link>
-      <RanNumTest />
-      {/* <MatchBetline list={match} /> */}
-      <MatchTest />
       <Button onClick={onCLick}>{message}</Button>
     </div>
   )

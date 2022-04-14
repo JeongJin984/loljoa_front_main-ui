@@ -7,19 +7,17 @@ import rootSaga from '../saga/root-saga'
 import { composeWithDevTools } from 'redux-devtools-extension'
 
 const bindMiddleware = (middleware) => {
-    if (true) {
-        return composeWithDevTools(applyMiddleware(...middleware))
-    }
-    return applyMiddleware(...middleware)
+  if (true) {
+    return composeWithDevTools(applyMiddleware(...middleware))
+  }
+  return applyMiddleware(...middleware)
 }
 
 const makeStore = context => {
-    const sagaMiddleware = createSagaMiddleware();
-    const store = createStore(rootReducer, bindMiddleware([sagaMiddleware]))
-
-    store.sagaTask = sagaMiddleware.run(rootSaga)
-
-    return store
+  const sagaMiddleware = createSagaMiddleware();
+  const store = createStore(rootReducer, bindMiddleware([sagaMiddleware]))
+  store.sagaTask = sagaMiddleware.run(rootSaga)
+  return store
 }
 
 const wrapper = createWrapper(makeStore, { debug: true })

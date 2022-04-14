@@ -1,6 +1,5 @@
 import produce from "immer";
-import {TEST_FAILURE, TEST_SUCCESS} from "../../config/event/eventName/test";
-
+import { CALL_MATCH_SUCCESS, CALL_MATCH_FAILURE } from "../../config/event/eventName/matchEvent"
 const initialState = {
   matchData: [
     {
@@ -54,10 +53,10 @@ const initialState = {
 const matchReducer = (state = initialState, action) => {
   return produce(state, draft => {
     switch (action.type) {
-      case TEST_SUCCESS:
+      case CALL_MATCH_SUCCESS:
         draft.message = action.data;
         break;
-      case TEST_FAILURE:
+      case CALL_MATCH_FAILURE:
         draft.message = "error";
         break;
       default:
