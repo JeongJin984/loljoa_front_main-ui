@@ -19,3 +19,4 @@ export const ADD_TEAM_DATA = 'ADD_TEAM_DATA'
 export const DELETE_TEAM_DATA = 'DELETE_TEAM_DATA'
 
 export const addTeamData = data => ({ type: ADD_TEAM_DATA, payload: data })
+export const teamSelectRequest = () => ({ type: TEAM_SELECT_REQUEST })

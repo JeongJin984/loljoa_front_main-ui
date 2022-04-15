@@ -1,5 +1,5 @@
 import produce from "immer";
-import { TEAM_SELECT_SUCCESS, TEAM_SELECT_FAILURE, ADD_TEAM_DATA, DELETE_TEAM_DATA, } from "../../config/event/eventName/matchEvent"
+import { TEST_FAILURE, TEST_SUCCESS, ADD_TEAM_DATA, DELETE_TEAM_DATA, } from "../../config/event/eventName/matchEvent"
 
 
 const initialState = {
@@ -7,23 +7,21 @@ const initialState = {
 }
 
 const teamReducer = (state = initialState, action) => {
-  let copyState = [state];
-
-  switch (action.type) {
-    // case TEAM_SELECT_SUCCESS:
-    //   copyState.message = action.data;
-    //   return copyState;
-    // case TEAM_SELECT_FAILURE:
-    //   copyState.message = "ERROR";
-    //   return copyState;
-    case ADD_TEAM_DATA:
-      copyState.push(action.payload);
-      return copyState;
-    case DELETE_TEAM_DATA:
-      return state;
-    default:
-      return state;
-  }
+  return produce(state, draft => {
+    switch (action.type) {
+      case TEST_SUCCESS:
+        draft.message = action.data;
+        break;
+      case TEST_FAILURE:
+        draft.message = "error";
+        break;
+      case ADD_TEAM_DATA:
+        draft.teamData.push(action.payload);
+        break;
+      default:
+        break;
+    }
+  })
 }
 
 export default teamReducer;

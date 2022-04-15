@@ -1,28 +1,27 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import styles from '../../styles/Betline.module.css';
 import { useDispatch, useSelector } from "react-redux";
-import { TEAM_SELECT_REQUEST, addTeamData, DELETE_TEAM_DATA } from '../../config/event/eventName/matchEvent';
+import { teamSelectRequest, TEAM_SELECT_REQUEST, addTeamData, DELETE_TEAM_DATA } from '../../config/event/eventName/matchEvent';
 
 const MatchBetline = ({ matchData }) => {
 
+  const { teamData } = useSelector(state => state.teamReducer)
   const dispatch = useDispatch()
   const onAddTeamData = (data) => dispatch(addTeamData(data))
 
   const leftClick = (item) => {
     const leftTeamData = { "id": item.id, "team": item.leftTeam, "odds": item.leftOdds }
-    { () => { onAddTeamData(leftTeamData) } }
+    onAddTeamData(leftTeamData)
     console.log(leftTeamData)
     console.log({ teamData })
   }
 
   const rightClick = (item) => {
     const rightTeamData = { "id": item.id, "team": item.rightTeam, "odds": item.rightOdds }
-    { () => { onAddTeamData(rightTeamData) } }
+    onAddTeamData(rightTeamData)
     console.log(rightTeamData)
     console.log({ teamData })
   }
-
-  const { teamData } = useSelector(state => state.teamReducer)
 
 
 
