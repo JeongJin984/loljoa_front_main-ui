@@ -17,3 +17,5 @@ export const DELETE_TEAM_DATA_FAILURE = 'DELETE_TEAM_DATA_FAILURE';
 export const ADD_TEAM_DATA = 'ADD_TEAM_DATA'
 
 export const DELETE_TEAM_DATA = 'DELETE_TEAM_DATA'
+
+export const addTeamData = data => ({ type: ADD_TEAM_DATA, payload: data })
