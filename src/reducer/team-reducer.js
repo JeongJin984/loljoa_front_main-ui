@@ -16,7 +16,12 @@ const teamReducer = (state = initialState, action) => {
         draft.message = "error";
         break;
       case ADD_TEAM_DATA:
-        draft.teamData.push(action.payload);
+        if (draft.teamData.includes(action.payload)) {
+          draft.teamData.slice(-1);
+        }
+        else {
+          draft.teamData.push(action.payload);
+        }
         break;
       default:
         break;
