@@ -5,22 +5,20 @@ import { teamSelectRequest, TEAM_SELECT_REQUEST, addTeamData, DELETE_TEAM_DATA }
 
 const MatchBetline = ({ matchData }) => {
 
-  const { teamData } = useSelector(state => state.teamReducer)
+  // const { teamData } = useSelector(state => state.teamReducer)
   const dispatch = useDispatch()
   const onAddTeamData = (data) => dispatch(addTeamData(data))
 
   const leftClick = (item) => {
     const leftTeamData = { "id": item.id, "team": item.leftTeam, "odds": item.leftOdds }
     onAddTeamData(leftTeamData)
-    console.log(leftTeamData)
-    console.log({ teamData })
+    console.log({ leftTeamData })
   }
 
   const rightClick = (item) => {
     const rightTeamData = { "id": item.id, "team": item.rightTeam, "odds": item.rightOdds }
     onAddTeamData(rightTeamData)
-    console.log(rightTeamData)
-    console.log({ teamData })
+    console.log({ rightTeamData })
   }
 
 

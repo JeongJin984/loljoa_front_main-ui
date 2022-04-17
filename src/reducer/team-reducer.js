@@ -3,7 +3,7 @@ import { TEST_FAILURE, TEST_SUCCESS, ADD_TEAM_DATA, DELETE_TEAM_DATA, } from "..
 
 
 const initialState = {
-  teamData: [{ "id": "0", "team": "teamName", "odds": "0" }, { "id": "0", "team": "teamName", "odds": "0" }]
+  teamData: [{ "id": "999", "team": "teamName", "odds": "0" }]
 }
 
 const teamReducer = (state = initialState, action) => {
@@ -16,8 +16,18 @@ const teamReducer = (state = initialState, action) => {
         draft.message = "error";
         break;
       case ADD_TEAM_DATA:
-        if (draft.teamData.includes(action.payload)) {
-          draft.teamData.slice(-1);
+        let newData = action.payload;
+        // const index = Result.findIndex( (element) => element.grade === 'B');
+        let ifSameId = draft.teamData.findIndex((element) => element.id === newData["id"]) > 0;
+        let ifSameValue = draft.teamData.findIndex((element) => element.team === newData["team"] && element.id === newData["id"]) > 0;
+        if (ifSameId) {
+          if (ifSameValue) {
+            draft.teamData = draft.teamData.filter((item) => item.id !== newData["id"]);
+          }
+          else {
+            draft.teamData = draft.teamData.filter((item) => item.id !== newData["id"]);
+            draft.teamData.push(action.payload);
+          }
         }
         else {
           draft.teamData.push(action.payload);

@@ -6,19 +6,11 @@ import MatchBetline from '../src/component/MatchBetline';
 import wrapper from "../src/store/store-wrapper";
 import { END } from "redux-saga";
 import { useDispatch, useSelector } from 'react-redux';
-import { Button } from "semantic-ui-react";
-import { TEST_REQUEST } from "../config/event/eventName/test";
-import { CALL_MATCH_REQUEST } from '../config/event/eventName/matchEvent';
 
 const Home = () => {
   const dispatch = useDispatch()
   const { matchData } = useSelector(state => state.matchReducer)
-  const { message } = useSelector(state => state.leagueReducer)
-  const onCLick = useCallback(() => {
-    dispatch({
-      type: TEST_REQUEST
-    })
-  }, [dispatch])
+
 
   return (
     <div>
@@ -32,7 +24,6 @@ const Home = () => {
           <MatchBetline matchData={matchData} />
         </a>
       </Link>
-      <Button onClick={onCLick}>{message}</Button>
     </div>
   )
 }
