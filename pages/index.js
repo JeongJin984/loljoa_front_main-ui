@@ -7,12 +7,23 @@ import wrapper from "../src/store/store-wrapper";
 import { END } from "redux-saga";
 import { useDispatch, useSelector } from 'react-redux';
 import { CALL_MATCH_REQUEST } from '../config/event/eventName/matchEvent'
+import {Button} from "semantic-ui-react";
+import {TEST_REQUEST} from "../config/event/eventName/test";
 
 const Home = () => {
   const dispatch = useDispatch()
   const { matchData } = useSelector(state => state.matchReducer)
+  const { message } = useSelector(state => state.leagueReducer)
 
-  console.log({ matchData })
+  const onClickTest = useCallback(() => {
+    dispatch({
+      type: TEST_REQUEST,
+      params: {
+        leagueId: 5
+      },
+    })
+  }, [])
+
   return (
     <div>
       <div style={{ textAlign: "center", margin: "30px" }}>
