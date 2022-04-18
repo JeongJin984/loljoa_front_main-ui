@@ -10,7 +10,7 @@ import { CALL_MATCH_REQUEST } from '../config/event/eventName/matchEvent';
 
 const Betting = () => {
   const { matchData } = useSelector(state => state.matchReducer)
-
+  console.log({ matchData })
 
   return (
     <>

@@ -1,7 +1,7 @@
 import { all, fork } from 'redux-saga/effects';
 import createSaga from "../utils/createSaga";
 
-const watchMatch = createSaga("CALL_MATCH", "http://localhost:4321/match", "get");
+const watchMatch = createSaga("CALL_MATCH", "http://localhost:4321/league", "get");
 
 const watchAddTeam = createSaga("ADD_TEAM_DATA", "http://localhost:4321/team", "get")
 
