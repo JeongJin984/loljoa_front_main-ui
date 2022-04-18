@@ -61,7 +61,9 @@ const matchReducer = (state = initialState, action) => {
   return produce(state, draft => {
     switch (action.type) {
       case CALL_MATCH_SUCCESS:
-        draft.matchData = action.data.schedules;
+        draft.matchData = action.data.schedules.sort((a, b) => {
+          return a.startTime < b.startTime
+        });
         break;
       case CALL_MATCH_FAILURE:
         draft.message = "error";
