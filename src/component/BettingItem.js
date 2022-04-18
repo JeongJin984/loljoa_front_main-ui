@@ -22,5 +22,4 @@ const BettingItem = () => {
   )
 }
 
-
 export default BettingItem
