@@ -13,6 +13,7 @@
     color: #42E0E4;
     background-color: #20253d;
     padding-left: 15px;
+    font-size: 10px;
 }
 
 .betlineDate {
@@ -53,9 +54,18 @@
     background-color: #566796;
 }
 
+.leftMatch:active {
+    background-color: #6a7698;
+}
+
+.leftMatch:visited {
+    background-color: #f75a00;
+}
+
 .leftTeam {
     display: flex;
     padding-left: 10px;
+    font-size: 15px;
 }
 
 .leftOdds {
@@ -100,4 +110,5 @@
 .rightTeam {
     display: flex;
     padding-right: 10px;
+    font-size: 15px;
 }
