@@ -34,7 +34,7 @@ const MatchBetline = ({ matchData }) => {
             </button>
             <div className={styles.middle}>VS</div>
             <button className={styles.rightMatch} onClick={() => rightClick(item)}>
-              <div className={styles.rightTeam}>{item.leagueName.split("vs")[0]}</div>
+              <div className={styles.rightTeam}>{item.leagueName.split("vs")[1]}</div>
             </button>
           </div>
           <div className={styles.betlineDate}>{item.startTime}</div>
