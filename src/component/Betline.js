@@ -11,30 +11,35 @@ const Betline = ({ matchData }) => {
 
   // const { teamData } = useSelector(state => state.teamReducer)
   const dispatch = useDispatch()
-  const [activeIndex, setActiveIndex] = useState(0)
+  const [activeIndex, setActiveIndex] = useState(-1)
 
   const { game } = useSelector(state => state.matchReducer)
 
-  const handleAccordion = useCallback((index, id) => (e) => {
+  const handleAccordion = useCallback((index, leagueId) => (e) => {
     setActiveIndex(activeIndex === index ? -1 : index)
-    dispatch({
-      type: GET_GAME_DATA_REQUEST,
-      params: {
-        leagueId: id
-      }
-    })
+    if(activeIndex !== index && !matchData[index].details) {
+      dispatch({
+        type: GET_GAME_DATA_REQUEST,
+        params: {
+          leagueId
+        },
+        plus: {
+          leagueId
+        }
+      })
+    }
   }, [activeIndex])
 
   return (
     <Accordion>
       {matchData.map((item, i) => (
-        <span>
+        <span key={item.id}>
           <Accordion.Title
             active={activeIndex === i}
             index={0}
             onClick={handleAccordion(i, item.id)}
           >
-            <div key={item.id} className={styles.betlineWide}>
+            <div className={styles.betlineWide}>
               <div className={styles.tournament}>
                 <img src={'/image/LCK.png'} style={{ height: "25px" }} />
                 <div>LOL Champions Korea</div>
@@ -55,7 +60,7 @@ const Betline = ({ matchData }) => {
           </Accordion.Title>
           <Accordion.Content active={activeIndex === i}>
             <p>
-              {game.length > 0 && game[0].gameId}
+              {item.details && item.details[0].gameId}
             </p>
           </Accordion.Content>
         </span>
@@ -63,7 +68,5 @@ const Betline = ({ matchData }) => {
     </Accordion>
   )
 }
-
-
 
 export default Betline

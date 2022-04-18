@@ -20,7 +20,13 @@ const matchReducer = (state = initialState, action) => {
         draft.message = "error";
         break;
       case GET_GAME_DATA_SUCCESS:
-        draft.game = action.data
+        let index = -1;
+        draft.matchData.map((v, i) => {
+          if(v.id === action.plus.leagueId) {
+            index = i
+          }
+        })
+        draft.matchData[index].details = action.data
         break;
       // case SPLIT_TEAM_NAME:
       //   draft.matchData
