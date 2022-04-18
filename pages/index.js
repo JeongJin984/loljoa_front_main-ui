@@ -7,8 +7,9 @@ import wrapper from "../src/store/store-wrapper";
 import { END } from "redux-saga";
 import { useDispatch, useSelector } from 'react-redux';
 import { CALL_MATCH_REQUEST } from '../config/event/eventName/matchEvent'
-import { Button } from "semantic-ui-react";
+import { Button, Icon } from "semantic-ui-react";
 import { TEST_REQUEST } from "../config/event/eventName/test";
+import BettingItem from '../src/component/BettingItem';
 
 const Home = () => {
   const dispatch = useDispatch()
@@ -25,14 +26,24 @@ const Home = () => {
   }, [])
 
   return (
-    <div>
-      <div style={{ textAlign: "center", margin: "30px" }}>
-        <h2>League of Legends
-          /
-          Most Popular</h2>
+    <div style={{ display: "flex" }}>
+      <div style={{ flex: 4 }}>
+        <div style={{ textAlign: "center", margin: "30px" }}>
+          <h2>League of Legends
+            /
+            Most Popular</h2>
+        </div>
+        <div style={{ textAlign: "center", margin: "30px" }}>
+          <Betline matchData={matchData} />
+        </div>
       </div>
-      <div style={{ textAlign: "center", margin: "30px" }}>
-        <Betline matchData={matchData} />
+      <div style={{ color: "white", flex: 1, backgroundColor: "#242737" }}>
+
+        <div style={{ display: "flex", textAlign: "center", margin: "30px" }}>
+          <div>
+            내 배팅
+          </div>
+        </div>
       </div>
     </div>
   )

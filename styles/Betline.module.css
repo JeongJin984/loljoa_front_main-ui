@@ -1,7 +1,7 @@
 .betlineWide {
     display: flex;
     justify-content: center;
-    margin: 2px 200px 3px 200px;
+    margin: 2px 170px 3px 170px;
     min-height: 40px;
     font-size: 12px;
 }
@@ -12,6 +12,7 @@
     flex: 1 12%;
     color: #42E0E4;
     background-color: #20253d;
+    background: linear-gradient(0.25turn, #20253d, #384360);
     padding-left: 15px;
     font-size: 10px;
 }
@@ -23,7 +24,7 @@
     flex: 1 12%;
     text-align: right;
     color: #fff;
-    background-color: #20253d;
+    background: linear-gradient(0.25turn, #384360, #20253d);
     padding-right: 15px;
 }
 
@@ -50,19 +51,13 @@
     outline: 0;
 }
 
-
-
 .leftTeam {
     display: flex;
     padding-left: 10px;
     font-size: 15px;
 }
 
-.leftOdds {
-    display: flex;
-    padding-right: 10px;
-    font-size: 14px;
-}
+
 
 .middle {
     display: flex;
@@ -87,14 +82,86 @@
     outline: 0;
 }
 
-.rightOdds {
-    display: flex;
-    padding-left: 10px;
-    font-size: 14px;
-}
-
 .rightTeam {
     display: flex;
     padding-right: 10px;
     font-size: 15px;
+}
+
+.dataWide {
+    display: flex;
+    justify-content: center;
+    margin: -17px 170px 0px 170px;
+    min-height: 60px;
+    font-size: 12px;
+}
+
+.leftDetailData {
+    display: flex;
+    align-items: center;
+    flex: 1 12%;
+    color: white;
+    background: linear-gradient(0.25turn, #3f87a6, #6f3fa6);
+    font-size: 10px;
+}
+
+.leftData {
+    display: flex;
+    justify-content: flex-start;
+    flex: 1;
+    align-items: center;
+}
+
+.leftTotalPoint {
+    display: flex;
+    justify-content: flex-start;
+    flex: 1;
+    margin-left: 10px;
+    font-size: 15px;
+    align-items: center;
+
+}
+
+.leftOdds {
+    display: flex;
+    flex: 1;
+    justify-content: flex-end;
+    padding-right: 10px;
+    font-size: 18px;
+}
+
+
+.rightDetailData {
+    display: flex;
+    align-items: center;
+    flex: 1 12%;
+    color: white;
+    background: linear-gradient(0.25turn, #6f3fa6, #a63f3f);
+    font-size: 10px;
+}
+
+.rightData {
+    display: flex;
+    justify-content: flex-end;
+    flex: 1;
+    align-items: center;
+
+}
+
+.rightTotalPoint {
+    display: flex;
+    justify-content: flex-end;
+    flex: 1;
+    margin-right: 10px;
+    font-size: 15px;
+    align-items: center;
+
+}
+
+.rightOdds {
+    display: flex;
+    flex: 1;
+    justify-content: flex-start;
+    padding-left: 10px;
+    font-size: 18px;
 }

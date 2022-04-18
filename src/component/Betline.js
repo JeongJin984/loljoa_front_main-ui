@@ -17,7 +17,7 @@ const Betline = ({ matchData }) => {
 
   const handleAccordion = useCallback((index, leagueId) => (e) => {
     setActiveIndex(activeIndex === index ? -1 : index)
-    if(activeIndex !== index && !matchData[index].details) {
+    if (activeIndex !== index && !matchData[index].details) {
       dispatch({
         type: GET_GAME_DATA_REQUEST,
         params: {
@@ -45,27 +45,53 @@ const Betline = ({ matchData }) => {
                 <div>LOL Champions Korea</div>
               </div>
               <div className={styles.matchup}>
-                <button className={styles.leftMatch}>
+                <div className={styles.leftMatch}>
                   <img src={"/image/" + item.leagueName.split("vs")[0] + ".png"} style={{ height: "25px" }} />
                   <div className={styles.leftTeam} >{item.leagueName.split("vs")[0]}</div>
-                </button>
+                  <div className={styles.leftOdds} ></div>
+                </div>
                 <div className={styles.middle}>VS</div>
-                <button className={styles.rightMatch}>
+                <div className={styles.rightMatch}>
+                  <div className={styles.rightOdds} >{item.rightOdds}</div>
                   <div className={styles.rightTeam}>{item.leagueName.split("vs")[1]}</div>
                   <img src={"/image/" + item.leagueName.split("vs")[1] + ".png"} style={{ height: "25px" }} />
-                </button>
+                </div>
               </div>
               <div className={styles.betlineDate}>{item.startTime}</div>
             </div>
           </Accordion.Title>
           <Accordion.Content active={activeIndex === i}>
-            <p>
-              {item.details && item.details[0].gameId}
-            </p>
+            <div className={styles.dataWide}>
+              <div className={styles.leftDetailData}>
+                <div className={styles.leftTotalPoint}>총 포인트 {item.details && item.details[0].choices[0].totalPoint}</div>
+                <div className={styles.leftData}>
+                  최대 배팅 : {item.details && item.details[0].choices[0].biggestPoint}
+                  <div className={styles.leftOdds}>
+                    {
+                      Math.round(((Number(item.details && item.details[0].choices[0].totalPoint) + Number(item.details && item.details[0].choices[1].totalPoint)) / Number(item.details && item.details[0].choices[0].totalPoint) + Number.EPSILON) * 100) / 100
+                    }
+                  </div>
+                </div>
+              </div>
+              <div className={styles.rightDetailData}>
+
+                <div className={styles.rightData}>
+                  <div className={styles.rightOdds}>
+                    {
+                      Math.round(((Number(item.details && item.details[0].choices[0].totalPoint) + Number(item.details && item.details[0].choices[1].totalPoint)) / Number(item.details && item.details[0].choices[1].totalPoint) + Number.EPSILON) * 100) / 100
+                    }
+                  </div>
+                  {item.details && item.details[0].choices[1].biggestPoint} : 최대 배팅
+                </div>
+                <div className={styles.rightTotalPoint}>{item.details && item.details[0].choices[1].totalPoint} 총 포인트</div>
+              </div>
+            </div>
           </Accordion.Content>
         </span>
-      ))}
-    </Accordion>
+
+      ))
+      }
+    </Accordion >
   )
 }
 
