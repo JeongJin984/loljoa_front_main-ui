@@ -50,7 +50,17 @@
     outline: 0;
 }
 
+.leftMatch:hover {
+    background-color: #566796;
+}
 
+.leftMatch:active {
+    background-color: #6a7698;
+}
+
+.leftMatch:visited {
+    background-color: #f75a00;
+}
 
 .leftTeam {
     display: flex;
@@ -85,6 +95,10 @@
     background-color: #384360;
     border: 0;
     outline: 0;
+}
+
+.rightMatch:hover {
+    background-color: #566796;
 }
 
 .rightOdds {

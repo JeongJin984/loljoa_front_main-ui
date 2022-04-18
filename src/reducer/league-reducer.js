@@ -1,6 +1,6 @@
 import produce from "immer";
 import { TEST_FAILURE, TEST_SUCCESS } from "../../config/event/eventName/test";
-import {GET_GAME_DATA_SUCCESS} from "../../config/event/eventName/matchEvent";
+import { GET_GAME_DATA_SUCCESS } from "../../config/event/eventName/matchEvent";
 
 const initialState = {
   message: "Click!"
@@ -16,7 +16,7 @@ const leagueReducer = (state = initialState, action) => {
         draft.message = "error";
         break;
       case GET_GAME_DATA_SUCCESS:
-        draft
+        break;
       default:
         break;
     }
