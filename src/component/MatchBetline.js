@@ -24,6 +24,10 @@ const MatchBetline = ({ matchData }) => {
 
   // document.querySelector('#styles.leftMatch').classList.toggle()
 
+  const onClickRaw = () => {
+    dispatch
+  }
+
   return (
     <div>
       {matchData.map((item, i) => (
