@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react'
 import styles from '../../styles/Betline.module.css';
 import { useDispatch, useSelector } from "react-redux";
 import {
-  addTeamData,
+  addTeamData, BETTING_REQUEST,
   GET_GAME_DATA_REQUEST
 } from '../../config/event/eventName/matchEvent';
 import { Accordion } from 'semantic-ui-react'
@@ -12,10 +12,27 @@ const Betline = ({ matchData }) => {
   // const { teamData } = useSelector(state => state.teamReducer)
   const dispatch = useDispatch()
   const [activeIndex, setActiveIndex] = useState(-1)
+  const [point, setPoint] = useState('0')
 
   const { game } = useSelector(state => state.matchReducer)
+  const { user } = useSelector(state => state.userReducer)
 
-  // const bettingClick = 
+  const onChangePoint = useCallback((e) => {
+    setPoint(e.target.value)
+  }, [point])
+
+  const onClickBetting = useCallback((leagueId, choiceId) => () => {
+    console.log(leagueId, choiceId, user.accountId, parseInt(point))
+    dispatch({
+      type: BETTING_REQUEST,
+      params: {
+        leagueId: 5,
+        choiceId: 156,
+        accountId: 391,
+        point: parseInt(point)
+      }
+    })
+  }, [user, point])
 
   const handleAccordion = useCallback((index, leagueId) => (e) => {
     setActiveIndex(activeIndex === index ? -1 : index)
@@ -50,7 +67,7 @@ const Betline = ({ matchData }) => {
                 <div className={styles.leftMatch}>
                   <img src={"/image/" + item.leagueName.split("vs")[0] + ".png"} style={{ height: "25px" }} />
                   <div className={styles.leftTeam} >{item.leagueName.split("vs")[0]}</div>
-                  <div className={styles.leftOdds} ></div>
+                  <div className={styles.leftOdds}/>
                 </div>
                 <div className={styles.middle}>VS</div>
                 <div className={styles.rightMatch}>
@@ -62,51 +79,53 @@ const Betline = ({ matchData }) => {
               <div className={styles.betlineDate}>{item.startTime}</div>
             </div>
           </Accordion.Title>
-          <Accordion.Content active={activeIndex === i}>
-            <div className={styles.dataWide}>
-              <div className={styles.Background}>
-                <div className={styles.leftDetailData}>
-                  <div className={styles.leftTotalPoint}>총 포인트 {item.details && item.details[0].choices[0].totalPoint}</div>
-                  <div className={styles.leftData}>
-                    최대 배팅 : {item.details && item.details[0].choices[0].biggestPoint}
-                    <div className={styles.leftOdds}>
-                      {
-                        Math.round(((Number(item.details && item.details[0].choices[0].totalPoint) + Number(item.details && item.details[0].choices[1].totalPoint)) / Number(item.details && item.details[0].choices[0].totalPoint) + Number.EPSILON) * 100) / 100
-                      }
+          {item.details &&
+            <Accordion.Content active={activeIndex === i}>
+              <div className={styles.dataWide}>
+                <div className={styles.Background}>
+                  <div className={styles.leftDetailData}>
+                    <div className={styles.leftTotalPoint}>총 포인트 {item.details && item.details[0].choices[0].totalPoint}</div>
+                    <div className={styles.leftData}>
+                      최대 배팅 : {item.details[0].choices[0].biggestPoint}
+                      <div className={styles.leftOdds}>
+                        {
+                          Math.round(((Number(item.details[0].choices[0].totalPoint) + Number(item.details[0].choices[1].totalPoint)) / Number(item.details[0].choices[0].totalPoint) + Number.EPSILON) * 100) / 100
+                        }
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                <div className={styles.rightDetailData}>
-                  <div className={styles.rightData}>
-                    <div className={styles.rightOdds}>
-                      {
-                        Math.round(((Number(item.details && item.details[0].choices[0].totalPoint) + Number(item.details && item.details[0].choices[1].totalPoint)) / Number(item.details && item.details[0].choices[1].totalPoint) + Number.EPSILON) * 100) / 100
-                      }
+                  <div className={styles.rightDetailData}>
+                    <div className={styles.rightData}>
+                      <div className={styles.rightOdds}>
+                        {
+                          Math.round(((Number(item.details[0].choices[0].totalPoint) + Number(item.details[0].choices[1].totalPoint)) / Number(item.details[0].choices[1].totalPoint) + Number.EPSILON) * 100) / 100
+                        }
+                      </div>
+                      {item.details[0].choices[1].biggestPoint} : 최대 배팅
                     </div>
-                    {item.details && item.details[0].choices[1].biggestPoint} : 최대 배팅
+                    <div className={styles.rightTotalPoint}>{item.details && item.details[0].choices[1].totalPoint} 총 포인트</div>
                   </div>
-                  <div className={styles.rightTotalPoint}>{item.details && item.details[0].choices[1].totalPoint} 총 포인트</div>
                 </div>
               </div>
-            </div>
-            <div className={styles.dataWide}>
-              <div className={styles.Background}>
-                <div className={styles.pointBetting}>
-                  <a className={styles.bettingButton}>
-                    {item.details && item.details[0].choices[0].name} 배팅
-                  </a>
-                  <div className={styles.pointInput}>
-                    <div>POINT</div>
-                    <input type='number' />
+              <div className={styles.dataWide}>
+                <div className={styles.Background}>
+                  <div className={styles.pointBetting}>
+                    <a className={styles.bettingButton} onClick={onClickBetting(item.id, item.details[0].choices[0].choiceId)}>
+                      {item.details[0].choices[0].name} 배팅
+                    </a>
+                    <div className={styles.pointInput}>
+                      <div>POINT</div>
+                      <input type='number' onChange={onChangePoint} value={point}/>
+                    </div>
+                    <a className={styles.bettingButton} onClick={onClickBetting(item.id, item.details[0].choices[1].choiceId)}>
+                      {item.details[0].choices[1].name} 배팅
+                    </a>
                   </div>
-                  <a className={styles.bettingButton}>
-                    {item.details && item.details[0].choices[1].name} 배팅
-                  </a>
                 </div>
               </div>
-            </div>
-          </Accordion.Content>
+            </Accordion.Content>
+          }
         </span>
 
       ))

@@ -5,6 +5,7 @@ import Top from "../src/component/Top";
 import Gnb from "../src/component/Gnb";
 import Footer from "../src/component/Footer";
 import wrapper from "../src/store/store-wrapper";
+import {CookiesProvider} from "react-cookie";
 
 class MyApp extends App {
   static getInitialProps = wrapper.getInitialAppProps(store => async ({ Component, ctx }) => {
@@ -24,14 +25,14 @@ class MyApp extends App {
     const { Component, pageProps } = this.props;
 
     return (
-      <>
+      <CookiesProvider>
         <div style={{ backgroundColor: "#F9F9F9" }}>
           <Top />
           <Gnb />
           <Component {...pageProps} />
           <Footer />
         </div >
-      </>
+      </CookiesProvider>
     );
   }
 }

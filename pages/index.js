@@ -10,20 +10,11 @@ import { CALL_MATCH_REQUEST } from '../config/event/eventName/matchEvent'
 import { Button, Icon } from "semantic-ui-react";
 import { TEST_REQUEST } from "../config/event/eventName/test";
 import BettingItem from '../src/component/BettingItem';
+import {GET_USER_REQUEST} from "../config/event/eventName/userEvent";
 
 const Home = () => {
   const dispatch = useDispatch()
   const { matchData } = useSelector(state => state.matchReducer)
-  const { message } = useSelector(state => state.leagueReducer)
-
-  const onClickTest = useCallback(() => {
-    dispatch({
-      type: TEST_REQUEST,
-      params: {
-        leagueId: 5
-      },
-    })
-  }, [])
 
   return (
     <div style={{ display: "flex" }}>
@@ -60,6 +51,13 @@ export const getServerSideProps = wrapper.getServerSideProps(store =>
       type: CALL_MATCH_REQUEST
     })
     // }
+
+    if (cookie) {
+      Axios.defaults.headers.Cookie = cookie;
+      store.dispatch({
+        type: GET_USER_REQUEST
+      })
+    }
     store.dispatch(END);
     await store.sagaTask.toPromise();
   }
