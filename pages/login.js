@@ -16,15 +16,11 @@ const Login = () => {
 
     const { user } = useSelector(state => state.userReducer)
 
+
     useEffect(() => {
-<<<<<<< HEAD
+
         if (user) {
             setCookie("SUID", user.username, { path: "/" })
-            // router.push("/")
-=======
-        if(user) {
-            setCookie("SUID", user.username, {path: "/"})
->>>>>>> 9f60ea2d6105be3e92dc94b461bb8bb0cbc06cd9
         }
     }, [user])
 
@@ -56,7 +52,7 @@ const Login = () => {
                 <Form.Field inline>
                     <input type="password" placeholder="Password" onChange={onChangePassword} value={password} />
                 </Form.Field>
-                <Button onClick={onClickLogin}>Login</Button>
+                <Button onClick={onClickLogin} href={"/"}>Login</Button>
             </Form>
         </div>
     )

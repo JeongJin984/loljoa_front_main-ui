@@ -1,21 +1,18 @@
 
 import Axios from 'axios';
-import { useCallback, useState } from 'react'
-import Link from 'next/link';
 import Betline from '../src/component/Betline';
 import wrapper from "../src/store/store-wrapper";
 import { END } from "redux-saga";
 import { useDispatch, useSelector } from 'react-redux';
 import { CALL_MATCH_REQUEST } from '../config/event/eventName/matchEvent'
-import { Button, Icon } from "semantic-ui-react";
-import { TEST_REQUEST } from "../config/event/eventName/test";
-import BettingItem from '../src/component/BettingItem';
-import {GET_USER_REQUEST} from "../config/event/eventName/userEvent";
+import MyBetting from '../src/component/MyBetting';
+import { GET_USER_REQUEST } from "../config/event/eventName/userEvent";
 
 const Home = () => {
   const dispatch = useDispatch()
   const { matchData } = useSelector(state => state.matchReducer)
-
+  const { user } = useSelector(state => state.userReducer)
+  console.log({ user })
   return (
     <div style={{ display: "flex" }}>
       <div style={{ flex: 4 }}>
@@ -30,10 +27,9 @@ const Home = () => {
       </div>
       <div style={{ color: "white", flex: 1, backgroundColor: "#242737" }}>
 
-        <div style={{ display: "flex", textAlign: "center", margin: "30px" }}>
-          <div>
-            내 배팅
-          </div>
+        <div style={{ display: "flex", flexDirection: "column", textAlign: "center", margin: "10px" }}>
+          <div style={{ fontSize: "18px" }}>내 배팅</div>
+          <MyBetting user={user} />
         </div>
       </div>
     </div>

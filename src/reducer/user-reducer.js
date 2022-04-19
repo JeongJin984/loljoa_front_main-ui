@@ -1,9 +1,9 @@
 import produce from "immer";
-import {GET_USER_SUCCESS, LOGIN_SUCCESS} from "../../config/event/eventName/userEvent";
-import {BETTING_SUCCESS} from "../../config/event/eventName/matchEvent";
+import { GET_USER_SUCCESS, LOGIN_SUCCESS } from "../../config/event/eventName/userEvent";
+import { BETTING_SUCCESS } from "../../config/event/eventName/matchEvent";
 
 const initialState = {
-  user:{},
+  user: {},
 }
 
 const userReducer = (state = initialState, action) => {

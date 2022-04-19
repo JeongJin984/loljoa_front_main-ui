@@ -1,13 +1,13 @@
 import Link from "next/link"
-import { Segment } from 'semantic-ui-react'
+import { Segment, Button } from 'semantic-ui-react'
 import styles from '../../styles/Gnb.module.css';
 
 const Gnb = () => {
   return (
-    <div >
-      <Segment inverted className={styles.navbarWeb} >
-        <Link href="/">
-          <a className={styles.logo}>
+    <div>
+      <div className={styles.navbarWeb} >
+        <Link href="/" className={styles.logo}>
+          <a style={{ color: "white" }}>
             <h1>LOLjoa</h1>
           </a>
         </Link>
@@ -25,8 +25,12 @@ const Gnb = () => {
             <Link href="/board">게시판</Link>
           </li>
         </ul>
-        <ul></ul>
-      </Segment>
+        <Button href={"/login"}>
+          <div>
+            로그인
+          </div>
+        </Button>
+      </div>
     </div>
   )
 }

@@ -3,7 +3,7 @@ import { TEST_FAILURE, TEST_SUCCESS, ADD_TEAM_DATA, DELETE_TEAM_DATA, } from "..
 
 
 const initialState = {
-  teamData: [{ "id": 0, "startTime": "999", "team": "teamName" }]
+  teamData: []
 }
 
 const teamReducer = (state = initialState, action) => {
