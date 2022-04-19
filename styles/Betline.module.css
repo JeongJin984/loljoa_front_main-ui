@@ -96,14 +96,23 @@
     font-size: 12px;
 }
 
+.Background {
+    display: flex;
+    flex: 1;
+    background: linear-gradient(0.25turn, #3f87a6, #6f3fa6, #a63f3f);
+    min-height: 60px;
+}
+
+
 .leftDetailData {
     display: flex;
     align-items: center;
     flex: 1 12%;
     color: white;
-    background: linear-gradient(0.25turn, #3f87a6, #6f3fa6);
     font-size: 10px;
+    height: 60px;
 }
+
 
 .leftData {
     display: flex;
@@ -130,14 +139,13 @@
     font-size: 18px;
 }
 
-
 .rightDetailData {
     display: flex;
     align-items: center;
     flex: 1 12%;
     color: white;
-    background: linear-gradient(0.25turn, #6f3fa6, #a63f3f);
     font-size: 10px;
+    height: 60px;
 }
 
 .rightData {
@@ -164,4 +172,33 @@
     justify-content: flex-start;
     padding-left: 10px;
     font-size: 18px;
+}
+
+.pointBetting {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex: 1 12%;
+    color: white;
+    font-size: 10px;
+    height: 60px;
+}
+
+.bettingButton {
+    display: flex;
+    justify-content: center;
+    flex: 2;
+    font-size: 25px;
+    color: #fff;
+}
+
+.bettingButton:hover {
+    opacity: 0.5;
+    color: #fff;
+}
+
+.pointInput {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }

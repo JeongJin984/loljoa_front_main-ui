@@ -15,6 +15,8 @@ const Betline = ({ matchData }) => {
 
   const { game } = useSelector(state => state.matchReducer)
 
+  // const bettingClick = 
+
   const handleAccordion = useCallback((index, leagueId) => (e) => {
     setActiveIndex(activeIndex === index ? -1 : index)
     if (activeIndex !== index && !matchData[index].details) {
@@ -62,28 +64,46 @@ const Betline = ({ matchData }) => {
           </Accordion.Title>
           <Accordion.Content active={activeIndex === i}>
             <div className={styles.dataWide}>
-              <div className={styles.leftDetailData}>
-                <div className={styles.leftTotalPoint}>총 포인트 {item.details && item.details[0].choices[0].totalPoint}</div>
-                <div className={styles.leftData}>
-                  최대 배팅 : {item.details && item.details[0].choices[0].biggestPoint}
-                  <div className={styles.leftOdds}>
-                    {
-                      Math.round(((Number(item.details && item.details[0].choices[0].totalPoint) + Number(item.details && item.details[0].choices[1].totalPoint)) / Number(item.details && item.details[0].choices[0].totalPoint) + Number.EPSILON) * 100) / 100
-                    }
+              <div className={styles.Background}>
+                <div className={styles.leftDetailData}>
+                  <div className={styles.leftTotalPoint}>총 포인트 {item.details && item.details[0].choices[0].totalPoint}</div>
+                  <div className={styles.leftData}>
+                    최대 배팅 : {item.details && item.details[0].choices[0].biggestPoint}
+                    <div className={styles.leftOdds}>
+                      {
+                        Math.round(((Number(item.details && item.details[0].choices[0].totalPoint) + Number(item.details && item.details[0].choices[1].totalPoint)) / Number(item.details && item.details[0].choices[0].totalPoint) + Number.EPSILON) * 100) / 100
+                      }
+                    </div>
                   </div>
+                </div>
+
+                <div className={styles.rightDetailData}>
+                  <div className={styles.rightData}>
+                    <div className={styles.rightOdds}>
+                      {
+                        Math.round(((Number(item.details && item.details[0].choices[0].totalPoint) + Number(item.details && item.details[0].choices[1].totalPoint)) / Number(item.details && item.details[0].choices[1].totalPoint) + Number.EPSILON) * 100) / 100
+                      }
+                    </div>
+                    {item.details && item.details[0].choices[1].biggestPoint} : 최대 배팅
+                  </div>
+                  <div className={styles.rightTotalPoint}>{item.details && item.details[0].choices[1].totalPoint} 총 포인트</div>
                 </div>
               </div>
-              <div className={styles.rightDetailData}>
-
-                <div className={styles.rightData}>
-                  <div className={styles.rightOdds}>
-                    {
-                      Math.round(((Number(item.details && item.details[0].choices[0].totalPoint) + Number(item.details && item.details[0].choices[1].totalPoint)) / Number(item.details && item.details[0].choices[1].totalPoint) + Number.EPSILON) * 100) / 100
-                    }
+            </div>
+            <div className={styles.dataWide}>
+              <div className={styles.Background}>
+                <div className={styles.pointBetting}>
+                  <a className={styles.bettingButton}>
+                    {item.details && item.details[0].choices[0].name} 배팅
+                  </a>
+                  <div className={styles.pointInput}>
+                    <div>POINT</div>
+                    <input type='number' />
                   </div>
-                  {item.details && item.details[0].choices[1].biggestPoint} : 최대 배팅
+                  <a className={styles.bettingButton}>
+                    {item.details && item.details[0].choices[1].name} 배팅
+                  </a>
                 </div>
-                <div className={styles.rightTotalPoint}>{item.details && item.details[0].choices[1].totalPoint} 총 포인트</div>
               </div>
             </div>
           </Accordion.Content>
