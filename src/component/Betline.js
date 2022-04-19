@@ -22,13 +22,12 @@ const Betline = ({ matchData }) => {
   }, [point])
 
   const onClickBetting = useCallback((leagueId, choiceId) => () => {
-    console.log(leagueId, choiceId, user.accountId, parseInt(point))
     dispatch({
       type: BETTING_REQUEST,
       params: {
-        leagueId: 5,
-        choiceId: 156,
-        accountId: 391,
+        leagueId: leagueId,
+        choiceId: choiceId,
+        accountId: user.accountId,
         point: parseInt(point)
       }
     })
