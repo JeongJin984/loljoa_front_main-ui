@@ -1,25 +1,25 @@
 import Axios from "axios"
 import { Button, Form } from "semantic-ui-react"
 import { useRouter } from "next/router";
-import {useCallback, useEffect, useState} from "react";
-import {useDispatch, useSelector} from "react-redux";
-import {LOGIN_REQUEST} from "../config/event/eventName/userEvent";
-import {useCookies} from "react-cookie";
+import { useCallback, useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { LOGIN_REQUEST } from "../config/event/eventName/userEvent";
+import { useCookies } from "react-cookie";
 
 const Login = () => {
-    const router= useRouter()
+    const router = useRouter()
     const dispatch = useDispatch();
 
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [cookies, setCookie] = useCookies(['user']);
 
-    const {user} = useSelector(state => state.userReducer)
+    const { user } = useSelector(state => state.userReducer)
 
     useEffect(() => {
-        if(user) {
-            setCookie("SUID", user.username, {path: "/"})
-            router.push("/")
+        if (user) {
+            setCookie("SUID", user.username, { path: "/" })
+            // router.push("/")
         }
     }, [user])
 
@@ -28,7 +28,7 @@ const Login = () => {
         setUsername(e.target.value)
     }, [])
 
-    const onChangePassword= useCallback((e) => {
+    const onChangePassword = useCallback((e) => {
         setPassword(e.target.value)
     }, [])
 
