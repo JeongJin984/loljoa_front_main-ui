@@ -19,7 +19,6 @@ const Login = () => {
     useEffect(() => {
         if(user) {
             setCookie("SUID", user.username, {path: "/"})
-            router.push("/")
         }
     }, [user])
 
