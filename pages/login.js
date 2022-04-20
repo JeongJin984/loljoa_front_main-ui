@@ -3,7 +3,7 @@ import { Button, Form } from "semantic-ui-react"
 import { useRouter } from "next/router";
 import { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { LOGIN_REQUEST } from "../config/event/eventName/userEvent";
+import {GET_USER_REQUEST, LOGIN_REQUEST} from "../config/event/eventName/userEvent";
 import { useCookies } from "react-cookie";
 
 const Login = () => {
@@ -26,7 +26,9 @@ const Login = () => {
       func()
         .then(() => {
           alert("login Success")
-          window.location.reload()
+          dispatch({
+            type: GET_USER_REQUEST
+          })
         })
     }
   }, [user])
