@@ -52,7 +52,7 @@ const Login = () => {
                 <Form.Field inline>
                     <input type="password" placeholder="Password" onChange={onChangePassword} value={password} />
                 </Form.Field>
-                <Button onClick={onClickLogin} href={"/"}>Login</Button>
+                <Button onClick={onClickLogin}>Login</Button>
             </Form>
         </div>
     )
