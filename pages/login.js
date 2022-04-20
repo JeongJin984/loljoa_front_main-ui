@@ -16,13 +16,15 @@ const Login = () => {
 
   const { user } = useSelector(state => state.userReducer)
 
+  const func = async () => {
+    await setCookie("SUID", user.username, { path: "/" })
+    await router.push("/")
+  }
 
   useEffect(() => {
-    if(user !== {} && user) {
-      router.push("/")
-        .then(
-          () => setCookie("SUID", user.username, { path: "/" })
-        )
+    if(user.username !== undefined) {
+      func()
+        .then(() => alert("login Success"))
     }
   }, [user])
 
@@ -54,7 +56,7 @@ const Login = () => {
         <Form.Field inline>
           <input type="password" placeholder="Password" onChange={onChangePassword} value={password} />
         </Form.Field>
-        <Button onClick={onClickLogin} href={"/"}>Login</Button>
+        <Button onClick={onClickLogin}>Login</Button>
       </Form>
     </div>
   )
