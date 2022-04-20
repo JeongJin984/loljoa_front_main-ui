@@ -18,7 +18,7 @@ const Login = () => {
 
 
   useEffect(() => {
-    if (user) {
+    if(user !== {} && user) {
       router.push("/")
         .then(
           () => setCookie("SUID", user.username, { path: "/" })
