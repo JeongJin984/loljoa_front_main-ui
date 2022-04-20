@@ -45,31 +45,6 @@ const Login = () => {
     })
   }, [username, password])
 
-<<<<<<< HEAD
-    const onClickLogin = useCallback(() => {
-        dispatch({
-            type: LOGIN_REQUEST,
-            params: {
-                username,
-                password
-            }
-        })
-    }, [username, password])
-
-    return (
-        <div style={{ padding: "100px 0", textAlign: "center" }}>
-            <Form>
-                <Form.Field inline>
-                    <input placeholder="ID" onChange={onChangeUsername} value={username} />
-                </Form.Field>
-                <Form.Field inline>
-                    <input type="password" placeholder="Password" onChange={onChangePassword} value={password} />
-                </Form.Field>
-                <Button onClick={onClickLogin}>Login</Button>
-            </Form>
-        </div>
-    )
-=======
   return (
     <div style={{ padding: "100px 0", textAlign: "center" }}>
       <Form>
@@ -83,7 +58,6 @@ const Login = () => {
       </Form>
     </div>
   )
->>>>>>> c02102ea43006d58565c40da45f915fa04dc69df
 
 }
 
