@@ -16,17 +16,11 @@ const Login = () => {
 
   const { user } = useSelector(state => state.userReducer)
 
-  const func = async () => {
-    await setCookie("SUID", user.username, { path: "/" })
-    await router.push("/")
-  }
-
   useEffect(() => {
     if(user.username !== undefined) {
-      func()
-        .then(() => {
-          alert("login Success")
-        })
+      setCookie("SUID", user.username, { path: "/" })
+      router.push("/")
+        .then(() => alert("login success"))
     }
   }, [user])
 
