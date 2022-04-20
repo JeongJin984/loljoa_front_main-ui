@@ -24,7 +24,10 @@ const Login = () => {
   useEffect(() => {
     if(user.username !== undefined) {
       func()
-        .then(() => alert("login Success"))
+        .then(() => {
+          alert("login Success")
+          window.location.reload()
+        })
     }
   }, [user])
 
