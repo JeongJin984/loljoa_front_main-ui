@@ -5,6 +5,10 @@ import { useSelector, useDispatch } from "react-redux";
 const MyBetting = (userData) => {
   const dispatch = useDispatch()
 
+  const { matchData } = useSelector(state => state.matchReducer)
+
+
+
   return (
     <div>
       {userData.user.bettingData?.map((item, i) => (
