@@ -90,7 +90,7 @@ const Betline = ({ matchData }) => {
                       최대 배팅 : {item.details[0].choices[0].biggestPoint}
                       <div className={styles.leftOdds}>
                         {
-                          item.details[0].choices[0].odd
+                          Math.round(item.details[0].choices[0].odd * 100) / 100
                         }
                       </div>
                     </div>
@@ -100,7 +100,7 @@ const Betline = ({ matchData }) => {
                     <div className={styles.rightData}>
                       <div className={styles.rightOdds}>
                         {
-                          Math.round(item.details[0].choices[1].odd  * 100) / 100
+                          Math.round(item.details[0].choices[1].odd * 100) / 100
                         }
                       </div>
                       {item.details[0].choices[1].biggestPoint} : 최대 배팅
