@@ -1,4 +1,3 @@
-import Axios from "axios"
 import { Button, Form } from "semantic-ui-react"
 import { useRouter } from "next/router";
 import { useCallback, useEffect, useState } from "react";

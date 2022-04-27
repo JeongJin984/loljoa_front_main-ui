@@ -1,5 +1,5 @@
 import produce from "immer";
-import { TEST_FAILURE, TEST_SUCCESS, ADD_TEAM_DATA, DELETE_TEAM_DATA, } from "../../config/event/eventName/matchEvent"
+import { ADD_TEAM_DATA, DELETE_TEAM_DATA, } from "../../config/event/eventName/matchEvent"
 
 
 const initialState = {
@@ -9,12 +9,6 @@ const initialState = {
 const teamReducer = (state = initialState, action) => {
   return produce(state, draft => {
     switch (action.type) {
-      case TEST_SUCCESS:
-        draft.message = action.data;
-        break;
-      case TEST_FAILURE:
-        draft.message = "error";
-        break;
       case ADD_TEAM_DATA:
         let newData = action.payload;
         // const index = Result.findIndex( (element) => element.grade === 'B');
