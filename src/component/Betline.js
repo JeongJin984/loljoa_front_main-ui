@@ -113,9 +113,13 @@ const Betline = ({ matchData }) => {
                 <div className={styles.Background}>
                   <bettingSwitch item={item} />
                   {
-                    user.bettingData.findIndex((element) => element.choiceId === item.details[0].choices[0].choiceId) > 0 || user.bettingData.findIndex((element) => element.choiceId === item.details[0].choices[1].choiceId) > 0
-                      ? <div className={styles.bettingDone}>경기 배팅 완료</div>
-                      :
+                    user.bettingData.findIndex(
+                      (element) =>
+                        element.choiceId === item.details[0].choices[0].choiceId) > 0 ||
+                        user.bettingData.findIndex(
+                          (element) => element.choiceId === item.details[0].choices[1].choiceId
+                        ) > 0
+                      ? <div className={styles.bettingDone}>경기 배팅 완료</div> :
                       <div className={styles.pointBetting}>
                         < a className={styles.bettingButton} onClick={onClickBetting(item.id, item.details[0].gameId, item.details[0].choices[0].choiceId)} >
                           {item.details[0].choices[0].name} 배팅
