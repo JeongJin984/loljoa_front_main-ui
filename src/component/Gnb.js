@@ -62,6 +62,9 @@ const Gnb = () => {
           <li className={styles.navlink}>
             <Link href="/board">게시판</Link>
           </li>
+          <li className={styles.navlink}>
+            <Link href="/management">관리자 페이지</Link>
+          </li>
         </ul>
         <LoginButton />
       </div>
