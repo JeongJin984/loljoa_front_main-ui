@@ -49,6 +49,7 @@ const Betline = ({ matchData }) => {
     }
   }, [activeIndex])
 
+
   return (
     <Accordion>
       {matchData.map((item, i) => (
@@ -110,24 +111,29 @@ const Betline = ({ matchData }) => {
               </div>
               <div className={styles.dataWide}>
                 <div className={styles.Background}>
-                  <div className={styles.pointBetting}>
-                    <a className={styles.bettingButton} onClick={onClickBetting(item.id, item.details[0].gameId, item.details[0].choices[0].choiceId)}>
-                      {item.details[0].choices[0].name} 배팅
-                    </a>
-                    <div className={styles.pointInput}>
-                      <div>POINT</div>
-                      <input type='number' onChange={onChangePoint} value={point} />
-                    </div>
-                    <a className={styles.bettingButton} onClick={onClickBetting(item.id, item.details[0].gameId, item.details[0].choices[1].choiceId)}>
-                      {item.details[0].choices[1].name} 배팅
-                    </a>
-                  </div>
+                  <bettingSwitch item={item} />
+                  {
+                    user.bettingData.findIndex((element) => element.choiceId === item.details[0].choices[0].choiceId) > 0 || user.bettingData.findIndex((element) => element.choiceId === item.details[0].choices[1].choiceId) > 0
+                      ? <div className={styles.bettingDone}>경기 배팅 완료</div>
+                      :
+                      <div className={styles.pointBetting}>
+                        < a className={styles.bettingButton} onClick={onClickBetting(item.id, item.details[0].gameId, item.details[0].choices[0].choiceId)} >
+                          {item.details[0].choices[0].name} 배팅
+                        </a >
+                        <div className={styles.pointInput}>
+                          <div>사용 가능POINT : {user.point}</div>
+                          <input type='number' onChange={onChangePoint} value={point} />
+                        </div>
+                        <a className={styles.bettingButton} onClick={onClickBetting(item.id, item.details[0].gameId, item.details[0].choices[1].choiceId)}>
+                          {item.details[0].choices[1].name} 배팅
+                        </a>
+                      </div>
+                  }
                 </div>
               </div>
             </Accordion.Content>
           }
         </span>
-
       ))
       }
     </Accordion >

@@ -26,8 +26,8 @@ const MyBetting = (userData) => {
             <div className={styles.odds}>{item.odd}</div>
           </div>
           <div className={styles.pintWide}>
-            <div>{item.point}P 배팅</div>
-            100P 배팅 150P 예상
+            <div className={styles.bettingPoint}>{item.point}P 배팅</div>
+            <div className={styles.rewardPoint}>{Math.round(Number(item.point) * Number(item.odd))}P 예상</div>
           </div>
         </div>
       ))}

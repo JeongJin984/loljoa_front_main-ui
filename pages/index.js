@@ -14,7 +14,7 @@ const Home = () => {
   const { user } = useSelector(state => state.userReducer)
   console.log({ user })
   return (
-    <div style={{ display: "flex" }}>
+    <div style={{ display: "flex", background: "#f6f8fa" }}>
       <div style={{ flex: 4 }}>
         <div style={{ textAlign: "center", margin: "30px" }}>
           <h2>League of Legends
@@ -28,11 +28,11 @@ const Home = () => {
       <div style={{ color: "white", flex: 1, backgroundColor: "#242737" }}>
 
         <div style={{ display: "flex", flexDirection: "column", textAlign: "center", margin: "10px" }}>
-          <div style={{ fontSize: "18px" }}>내 배팅</div>
+          <div style={{ fontSize: "22px", marginBottom: "10px" }}>내 배팅</div>
           <MyBetting user={user} />
         </div>
       </div>
-    </div>
+    </div >
   )
 }
 
