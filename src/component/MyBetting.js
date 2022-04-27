@@ -23,7 +23,7 @@ const MyBetting = (userData) => {
               <div style={{ display: "flex", fontSize: "20px" }}>{item.choice}</div>
               <div style={{ display: "flex", fontSize: "10px", color: "#F6BE23" }}>예측</div>
             </div>
-            <div className={styles.odds}>1.5</div>
+            <div className={styles.odds}>{item.odd}</div>
           </div>
           <div className={styles.pintWide}>
             <div>{item.point}P 배팅</div>

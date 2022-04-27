@@ -13,7 +13,7 @@ export default function* bettingSaga() {
     fork(watchMatch),
     fork(watchAddTeam),
     fork(watchGetGameData),
-    fork(watchBetting)
+    fork(watchBetting),
     // fork(watchTeamSelect)
   ]);
 }
