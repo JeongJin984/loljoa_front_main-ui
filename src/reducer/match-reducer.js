@@ -26,27 +26,7 @@ const matchReducer = (state = initialState, action) => {
             index = i
           }
         })
-        draft.matchData[index].details = [
-          {
-            ...action.data[0],
-            choices: [
-              {
-                ...action.data[0].choices[0],
-                odds: Math.round((
-                  (Number(action.data[0].choices[0].totalPoint) + Number(action.data[0].choices[1].totalPoint)) /
-                  Number(action.data[0].choices[0].totalPoint) + Number.EPSILON) * 100
-                ) / 100
-              }, {
-                ...action.data[0].choices[1],
-                odds: Math.round(
-                  (
-                    (Number(action.data[0].choices[0].totalPoint) + Number(action.data[0].choices[1].totalPoint)) /
-                    Number(action.data[0].choices[1].totalPoint) + Number.EPSILON) * 100
-                ) / 100
-              }
-            ]
-          }
-        ]
+        draft.matchData[index].details = action.data
         break;
       // case SPLIT_TEAM_NAME:
       //   draft.matchData
