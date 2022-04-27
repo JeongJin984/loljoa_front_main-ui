@@ -1,8 +1,8 @@
 import App from 'next/app'
 import '../styles/globals.css'
 import 'semantic-ui-css/semantic.min.css'
-import Gnb from "../component/Gnb";
-import Footer from "../component/Footer";
+import Gnb from "../src/component/Gnb";
+import Footer from "../src/component/Footer";
 import wrapper from "../src/store/store-wrapper";
 import { CookiesProvider } from "react-cookie";
 

@@ -1,11 +1,11 @@
 
 import Axios from 'axios';
-import Betline from '../component/Betline';
+import Betline from '../src/component/Betline';
 import wrapper from "../src/store/store-wrapper";
 import { END } from "redux-saga";
 import { useDispatch, useSelector } from 'react-redux';
 import { CALL_MATCH_REQUEST } from '../config/event/eventName/matchEvent'
-import MyBetting from '../component/MyBetting';
+import MyBetting from '../src/component/MyBetting';
 import { GET_USER_REQUEST } from "../config/event/eventName/userEvent";
 
 const Home = () => {

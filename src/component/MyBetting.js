@@ -1,7 +1,7 @@
 import React, {useCallback} from "react";
-import styles from '../styles/MyBetting.module.css';
+import styles from '../../styles/MyBetting.module.css';
 import { useSelector, useDispatch } from "react-redux";
-import {CANCEL_BETTING_REQUEST} from "../config/event/eventName/matchEvent";
+import {CANCEL_BETTING_REQUEST} from "../../config/event/eventName/matchEvent";
 
 const MyBetting = (userData) => {
   const dispatch = useDispatch()
@@ -26,7 +26,7 @@ const MyBetting = (userData) => {
       {userData.user.bettingData?.map((item, i) => (
         <div className={styles.bettingWide} >
           <div className={styles.matchData} >
-            <img src={'/LCK.png'} style={{ height: "15px" }} />
+            <img src={'/image/LCK.png'} style={{ height: "15px" }} />
             <div>{item.leftTeam} 대 {item.rightTeam}</div>
           </div>
           <div className={styles.predictWide}>

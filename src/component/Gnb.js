@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useCookies } from "react-cookie";
 import { useDispatch, useSelector } from "react-redux";
 import { Segment, Button } from 'semantic-ui-react'
-import styles from '../styles/Gnb.module.css';
+import styles from '../../styles/Gnb.module.css';
 
 const Gnb = () => {
 

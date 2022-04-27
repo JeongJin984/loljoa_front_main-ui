@@ -1,6 +1,6 @@
 import Axios from 'axios';
-import wrapper from "../src/store/store-wrapper";
-import { TEAM_SELECT_REQUEST, teamSelectRequest } from '../config/event/eventName/matchEvent';
+import wrapper from "../store/store-wrapper";
+import { TEAM_SELECT_REQUEST, teamSelectRequest } from '../../config/event/eventName/matchEvent';
 import { useDispatch, useSelector } from "react-redux";
 
 
@@ -12,7 +12,7 @@ const BettingItem = () => {
     <div>
       {teamData?.map((item, i) => (
         <div key={i} style={{ display: 'flex', border: "solid", margin: "5px" }}>
-          <img src={"/" + item.team + ".png"} style={{ height: "25px", margin: "5px" }}/>
+          <img src={"/image/" + item.team + ".png"} style={{ height: "25px", margin: "5px" }}/>
           <div style={{ margin: 5 }}>{item.team}</div>
           <div style={{ margin: 5 }}>{item.startTime}</div>
           {/* <div style={{ margin: 5 }}>{item.odds}</div> */}
