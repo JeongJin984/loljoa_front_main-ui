@@ -3,7 +3,7 @@ import styles from '../../styles/Betline.module.css';
 import { useDispatch, useSelector } from "react-redux";
 import {
   addTeamData, BETTING_REQUEST,
-  GET_GAME_DATA_REQUEST
+  GET_GAME_DATA_REQUEST, UPDATE_GAME_DATA_REQUEST
 } from '../../config/event/eventName/matchEvent';
 import { Accordion } from 'semantic-ui-react'
 
@@ -21,12 +21,13 @@ const Betline = ({ matchData }) => {
     setPoint(e.target.value)
   }, [point])
 
-  const onClickBetting = useCallback((leagueId, choiceId) => () => {
+  const onClickBetting = useCallback((leagueId, gameId, choiceId) => () => {
     dispatch({
       type: BETTING_REQUEST,
       params: {
         leagueId: leagueId,
         choiceId: choiceId,
+        gameId: gameId,
         accountId: user.accountId,
         point: parseInt(point)
       }
@@ -66,7 +67,7 @@ const Betline = ({ matchData }) => {
                 <div className={styles.leftMatch}>
                   <img src={"/image/" + item.leagueName.split("vs")[0] + ".png"} style={{ height: "25px" }} />
                   <div className={styles.leftTeam} >{item.leagueName.split("vs")[0]}</div>
-                  <div className={styles.leftOdds}/>
+                  <div className={styles.leftOdds} />
                 </div>
                 <div className={styles.middle}>VS</div>
                 <div className={styles.rightMatch}>
@@ -110,14 +111,14 @@ const Betline = ({ matchData }) => {
               <div className={styles.dataWide}>
                 <div className={styles.Background}>
                   <div className={styles.pointBetting}>
-                    <a className={styles.bettingButton} onClick={onClickBetting(item.id, item.details[0].choices[0].choiceId)}>
+                    <a className={styles.bettingButton} onClick={onClickBetting(item.id, item.details[0].gameId, item.details[0].choices[0].choiceId)}>
                       {item.details[0].choices[0].name} 배팅
                     </a>
                     <div className={styles.pointInput}>
                       <div>POINT</div>
-                      <input type='number' onChange={onChangePoint} value={point}/>
+                      <input type='number' onChange={onChangePoint} value={point} />
                     </div>
-                    <a className={styles.bettingButton} onClick={onClickBetting(item.id, item.details[0].choices[1].choiceId)}>
+                    <a className={styles.bettingButton} onClick={onClickBetting(item.id, item.details[0].gameId, item.details[0].choices[1].choiceId)}>
                       {item.details[0].choices[1].name} 배팅
                     </a>
                   </div>

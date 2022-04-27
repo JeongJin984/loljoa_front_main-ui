@@ -17,6 +17,7 @@ const userReducer = (state = initialState, action) => {
         break
       case BETTING_SUCCESS:
         draft.user.bettingData.push(action.data)
+        draft.
         break
       default:
         break;
