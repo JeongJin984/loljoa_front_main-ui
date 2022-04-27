@@ -4,6 +4,7 @@ import {BETTING_SUCCESS, CANCEL_BETTING_SUCCESS} from "../../config/event/eventN
 
 const initialState = {
   user: {},
+  bettingGameList: []
 }
 
 const userReducer = (state = initialState, action) => {
@@ -11,12 +12,15 @@ const userReducer = (state = initialState, action) => {
     switch (action.type) {
       case LOGIN_SUCCESS:
         draft.user = action.data
+        draft.user.bettingData.map(v => draft.bettingGameList.push(v.gameId))
         break
       case GET_USER_SUCCESS:
         draft.user = action.data
+        draft.user.bettingData.map(v => draft.bettingGameList.push(v.gameId))
         break
       case BETTING_SUCCESS:
         draft.user.bettingData.push(action.data)
+        draft.bettingGameList.push(action.plus.gameId)
         break
       case CANCEL_BETTING_SUCCESS:
         let index = -1

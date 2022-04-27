@@ -15,7 +15,7 @@ const Betline = ({ matchData }) => {
   const [point, setPoint] = useState('0')
 
   const { game } = useSelector(state => state.matchReducer)
-  const { user } = useSelector(state => state.userReducer)
+  const { user, bettingGameList} = useSelector(state => state.userReducer)
 
   const onChangePoint = useCallback((e) => {
     setPoint(e.target.value)
@@ -30,6 +30,9 @@ const Betline = ({ matchData }) => {
         gameId: gameId,
         accountId: user.accountId,
         point: parseInt(point)
+      },
+      plus: {
+        gameId
       }
     })
   }, [user, point])
@@ -80,7 +83,8 @@ const Betline = ({ matchData }) => {
               <div className={styles.betlineDate}>{item.startTime}</div>
             </div>
           </Accordion.Title>
-          {item.details && item.details[0] ?
+          {
+            item.details && item.details[0] ?
             <Accordion.Content active={activeIndex === i}>
               <div className={styles.dataWide}>
                 <div className={styles.Background}>
@@ -113,9 +117,8 @@ const Betline = ({ matchData }) => {
                 <div className={styles.Background}>
                   <bettingSwitch item={item} />
                   {
-                    user.bettingData.findIndex((element) => element.choiceId === item.details[0].choices[0].choiceId) > 0 || user.bettingData.findIndex((element) => element.choiceId === item.details[0].choices[1].choiceId) > 0
-                      ? <div className={styles.bettingDone}>경기 배팅 완료</div>
-                      :
+                    bettingGameList.includes(item.details[0].gameId)
+                      ? <div className={styles.bettingDone}>경기 배팅 완료</div> :
                       <div className={styles.pointBetting}>
                         < a className={styles.bettingButton} onClick={onClickBetting(item.id, item.details[0].gameId, item.details[0].choices[0].choiceId)} >
                           {item.details[0].choices[0].name} 배팅
