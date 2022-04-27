@@ -80,12 +80,12 @@ const Betline = ({ matchData }) => {
               <div className={styles.betlineDate}>{item.startTime}</div>
             </div>
           </Accordion.Title>
-          {item.details &&
+          {item.details && item.details[0] ?
             <Accordion.Content active={activeIndex === i}>
               <div className={styles.dataWide}>
                 <div className={styles.Background}>
                   <div className={styles.leftDetailData}>
-                    <div className={styles.leftTotalPoint}>총 포인트 {item.details && item.details[0].choices[0].totalPoint}</div>
+                    <div className={styles.leftTotalPoint}>총 포인트 {item.details[0].choices[0].totalPoint}</div>
                     <div className={styles.leftData}>
                       최대 배팅 : {item.details[0].choices[0].biggestPoint}
                       <div className={styles.leftOdds}>
@@ -131,6 +131,9 @@ const Betline = ({ matchData }) => {
                   }
                 </div>
               </div>
+            </Accordion.Content> :
+            <Accordion.Content active={activeIndex === i}>
+              <div>베팅이 완료되었습니다</div>
             </Accordion.Content>
           }
         </span>
