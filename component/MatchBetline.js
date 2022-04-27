@@ -33,12 +33,12 @@ const MatchBetline = ({ matchData }) => {
       {matchData.map((item, i) => (
         <div id={item.id} key={item.id} className={styles.betlineWide}>
           <div className={styles.tournament}>
-            <img src={'/image/LCK.png'} style={{ height: "25px" }} />
+            <img src={'/LCK.png'} style={{ height: "25px" }} />
             <div>LOL Champions Korea</div>
           </div>
           <div className={styles.matchup}>
             <button className={styles.leftMatch} onClick={() => leftClick(item)}>
-              <img src={"/image/" + item.leagueName.split("vs")[0] + ".png"} style={{ height: "25px" }}></img>
+              <img src={"/" + item.leagueName.split("vs")[0] + ".png"} style={{ height: "25px" }}/>
               <div className={styles.leftTeam} >{item.leagueName.split("vs")[0]}</div>
               <div className={styles.leftOdds} >{item.leftOdds}</div>
             </button>
@@ -46,7 +46,7 @@ const MatchBetline = ({ matchData }) => {
             <button className={styles.rightMatch} onClick={() => rightClick(item)}>
               <div className={styles.rightOdds} >{item.rightOdds}</div>
               <div className={styles.rightTeam}>{item.leagueName.split("vs")[1]}</div>
-              <img src={"/image/" + item.leagueName.split("vs")[1] + ".png"} style={{ height: "25px" }}></img>
+              <img src={"/" + item.leagueName.split("vs")[1] + ".png"} style={{ height: "25px" }}/>
             </button>
           </div>
           <div className={styles.betlineDate}>{item.startTime}</div>

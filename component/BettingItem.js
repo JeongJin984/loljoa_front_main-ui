@@ -12,7 +12,7 @@ const BettingItem = () => {
     <div>
       {teamData?.map((item, i) => (
         <div key={i} style={{ display: 'flex', border: "solid", margin: "5px" }}>
-          <img src={"/image/" + item.team + ".png"} style={{ height: "25px", margin: "5px" }}></img>
+          <img src={"/" + item.team + ".png"} style={{ height: "25px", margin: "5px" }}/>
           <div style={{ margin: 5 }}>{item.team}</div>
           <div style={{ margin: 5 }}>{item.startTime}</div>
           {/* <div style={{ margin: 5 }}>{item.odds}</div> */}

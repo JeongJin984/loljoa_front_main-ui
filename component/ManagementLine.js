@@ -61,12 +61,12 @@ const Betline = ({ matchData }) => {
           >
             <div className={styles.betlineWide}>
               <div className={styles.tournament}>
-                <img src={'/image/LCK.png'} style={{ height: "25px" }} />
+                <img src={'/LCK.png'} style={{ height: "25px" }} />
                 <div>LOL Champions Korea</div>
               </div>
               <div className={styles.matchup}>
                 <div className={styles.leftMatch}>
-                  <img src={"/image/" + item.leagueName.split("vs")[0] + ".png"} style={{ height: "25px" }} />
+                  <img src={"/" + item.leagueName.split("vs")[0] + ".png"} style={{ height: "25px" }} />
                   <div className={styles.leftTeam} >{item.leagueName.split("vs")[0]}</div>
                   <div className={styles.leftOdds} />
                 </div>
@@ -74,7 +74,7 @@ const Betline = ({ matchData }) => {
                 <div className={styles.rightMatch}>
                   <div className={styles.rightOdds} >{item.rightOdds}</div>
                   <div className={styles.rightTeam}>{item.leagueName.split("vs")[1]}</div>
-                  <img src={"/image/" + item.leagueName.split("vs")[1] + ".png"} style={{ height: "25px" }} />
+                  <img src={"/" + item.leagueName.split("vs")[1] + ".png"} style={{ height: "25px" }} />
                 </div>
               </div>
               <div className={styles.betlineDate}>{item.startTime}</div>

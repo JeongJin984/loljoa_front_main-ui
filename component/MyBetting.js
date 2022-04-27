@@ -26,11 +26,11 @@ const MyBetting = (userData) => {
       {userData.user.bettingData?.map((item, i) => (
         <div className={styles.bettingWide} >
           <div className={styles.matchData} >
-            <img src={'/image/LCK.png'} style={{ height: "15px" }} />
+            <img src={'/LCK.png'} style={{ height: "15px" }} />
             <div>{item.leftTeam} 대 {item.rightTeam}</div>
           </div>
           <div className={styles.predictWide}>
-            <img className={styles.logo} src={"/image/" + item.choice + ".png"} />
+            <img className={styles.logo} src={"/" + item.choice + ".png"} />
             <div className={styles.choice}>
               <div style={{ display: "flex", fontSize: "20px" }}>{item.choice}</div>
               <div style={{ display: "flex", fontSize: "10px", color: "#F6BE23" }}>예측</div>
