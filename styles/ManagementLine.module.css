@@ -1,0 +1,104 @@
+.betlineWide {
+    display: flex;
+    justify-content: center;
+    margin: 2px 170px 3px 170px;
+    min-height: 40px;
+    font-size: 12px;
+}
+
+.tournament {
+    display: flex;
+    align-items: center;
+    flex: 1 12%;
+    color: #42E0E4;
+    background-color: #20253d;
+    background: linear-gradient(0.25turn, #20253d, #384360);
+    padding-left: 15px;
+    font-size: 10px;
+}
+
+.betlineDate {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex: 1 12%;
+    text-align: right;
+    color: #fff;
+    background: linear-gradient(0.25turn, #384360, #20253d);
+    padding-right: 15px;
+}
+
+.matchup {
+    z-index: 1;
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    flex: 1 1 540px;
+    max-width: 50%;
+    background-color: #20253d;
+}
+
+.leftMatch {
+    display: flex;
+    flex: 1 1 47.5%;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 200px;
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 50%, calc(100% - 10px) 100%, 0 100%);
+    color: #fff;
+    background-color: #384360;
+    border: 0;
+    outline: 0;
+}
+
+.leftTeam {
+    display: flex;
+    padding-left: 10px;
+    font-size: 15px;
+}
+
+
+
+.middle {
+    display: flex;
+    color: #566796;
+    font-size: 15px;
+    justify-content: center;
+    align-items: center;
+    min-width: 50px;
+    max-width: 5%;
+}
+
+.rightMatch {
+    display: flex;
+    flex: 1 1 47.5%;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 200px;
+    clip-path: polygon(10px 0, 100% 0, 100% 100%, 10px 100%, 0 50%);
+    color: #fff;
+    background-color: #384360;
+    border: 0;
+    outline: 0;
+}
+
+.rightTeam {
+    display: flex;
+    padding-right: 10px;
+    font-size: 15px;
+}
+
+.dataWide {
+    display: flex;
+    justify-content: center;
+    margin: -17px 170px 0px 170px;
+    min-height: 60px;
+    font-size: 12px;
+}
+
+.Background {
+    display: flex;
+    flex: 1;
+    background: linear-gradient(0.25turn, #3f87a6, #6f3fa6, #a63f3f);
+    min-height: 60px;
+}
