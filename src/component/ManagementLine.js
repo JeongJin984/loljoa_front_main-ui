@@ -80,59 +80,56 @@ const Betline = ({ matchData }) => {
               <div className={styles.betlineDate}>{item.startTime}</div>
             </div>
           </Accordion.Title>
-          <Accordion.Content active={activeIndex === i}>
-            <div className={styles.dataWide}>
-              <div className={styles.Background}>
-                <div className={styles.leftDetailData}>
-                  <div className={styles.leftTotalPoint}>총 포인트 {item.details[0].choices[0].totalPoint}</div>
-                  <div className={styles.leftData}>
-                    최대 배팅 : {item.details[0].choices[0].biggestPoint}
-                    <div className={styles.leftOdds}>
-                      {
-                        Math.round(item.details[0].choices[0].odd * 100) / 100
-                      }
-                    </div>
-                  </div>
-                </div>
-
-                <div className={styles.rightDetailData}>
-                  <div className={styles.rightData}>
-                    <div className={styles.rightOdds}>
-                      {
-                        Math.round(item.details[0].choices[1].odd * 100) / 100
-                      }
-                    </div>
-                    {item.details[0].choices[1].biggestPoint} : 최대 배팅
-                  </div>
-                  <div className={styles.rightTotalPoint}>{item.details && item.details[0].choices[1].totalPoint} 총 포인트</div>
-                </div>
-              </div>
-            </div>
-            <div className={styles.dataWide}>
-              <div className={styles.Background}>
-                {
-                  user.bettingData.findIndex((element) => element.choiceId === item.details[0].choices[0].choiceId) > 0 || user.bettingData.findIndex((element) => element.choiceId === item.details[0].choices[1].choiceId) > 0
-                    ? <div className={styles.bettingDone}>경기 배팅 완료</div>
-                    :
-                    <div className={styles.pointBetting}>
-                      < a className={styles.bettingButton} onClick={onClickBetting(item.id, item.details[0].gameId, item.details[0].choices[0].choiceId)} >
-                        {item.details[0].choices[0].name} 배팅
-                      </a >
-                      <div className={styles.pointInput}>
-                        <div>사용 가능POINT : {user.point}</div>
-                        <input type='number' onChange={onChangePoint} value={point} />
+          {item.details && item.details[0] ?
+            <Accordion.Content active={activeIndex === i}>
+              <div className={styles.dataWide}>
+                <div className={styles.Background}>
+                  <div className={styles.leftDetailData}>
+                    <div className={styles.leftTotalPoint}>총 포인트 {item.details[0].choices[0].totalPoint}</div>
+                    <div className={styles.leftData}>
+                      최대 배팅 : {item.details[0].choices[0].biggestPoint}
+                      <div className={styles.leftOdds}>
+                        {
+                          Math.round(item.details[0].choices[0].odd * 100) / 100
+                        }
                       </div>
-                      <a className={styles.bettingButton} onClick={onClickBetting(item.id, item.details[0].gameId, item.details[0].choices[1].choiceId)}>
-                        {item.details[0].choices[1].name} 배팅
-                      </a>
                     </div>
-                }
+                  </div>
+
+                  <div className={styles.rightDetailData}>
+                    <div className={styles.rightData}>
+                      <div className={styles.rightOdds}>
+                        {
+                          Math.round(item.details[0].choices[1].odd * 100) / 100
+                        }
+                      </div>
+                      {item.details[0].choices[1].biggestPoint} : 최대 배팅
+                    </div>
+                    <div className={styles.rightTotalPoint}>{item.details && item.details[0].choices[1].totalPoint} 총 포인트</div>
+                  </div>
+                </div>
               </div>
-            </div>
-          </Accordion.Content>
-          <Accordion.Content active={activeIndex === i}>
-            <div>베팅이 완료되었습니다</div>
-          </Accordion.Content>
+              <div className={styles.dataWide}>
+                <div className={styles.Background}>
+                  <div className={styles.pointBetting}>
+                    < a className={styles.bettingButton} onClick={onClickBetting(item.id, item.details[0].gameId, item.details[0].choices[0].choiceId)} >
+                      {item.details[0].choices[0].name} 배팅
+                    </a >
+                    <div className={styles.pointInput}>
+                      <div>사용 가능POINT : {user.point}</div>
+                      <input type='number' onChange={onChangePoint} value={point} />
+                    </div>
+                    <a className={styles.bettingButton} onClick={onClickBetting(item.id, item.details[0].gameId, item.details[0].choices[1].choiceId)}>
+                      {item.details[0].choices[1].name} 배팅
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </Accordion.Content> :
+            <Accordion.Content active={activeIndex === i}>
+              <div>베팅이 완료되었습니다</div>
+            </Accordion.Content>
+          }
         </span>
       ))
       }
