@@ -1,13 +1,25 @@
-import React from "react";
+import React, {useCallback} from "react";
 import styles from '../../styles/MyBetting.module.css';
 import { useSelector, useDispatch } from "react-redux";
+import {CANCEL_BETTING_REQUEST} from "../../config/event/eventName/matchEvent";
 
 const MyBetting = (userData) => {
   const dispatch = useDispatch()
 
-  const { matchData } = useSelector(state => state.matchReducer)
+  const { user } = useSelector(state => state.userReducer)
 
-
+  const onClickCancel = useCallback((choiceId) => () => {
+    dispatch({
+      type: CANCEL_BETTING_REQUEST,
+      params: {
+        choiceId,
+        accountId: user.accountId
+      },
+      plus: {
+        choiceId
+      }
+    })
+  }, [userData])
 
   return (
     <div>
@@ -29,6 +41,7 @@ const MyBetting = (userData) => {
             <div className={styles.bettingPoint}>{item.point}P 배팅</div>
             <div className={styles.rewardPoint}>{Math.round(Number(item.point) * Number(item.odd))}P 예상</div>
           </div>
+          <button onClick={onClickCancel(item.choiceId)}>취소</button>
         </div>
       ))}
     </div>
