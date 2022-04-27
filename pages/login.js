@@ -17,12 +17,13 @@ const Login = () => {
   const { user } = useSelector(state => state.userReducer)
 
   useEffect(() => {
-    if(user.username !== undefined) {
+    if (user.username !== undefined) {
       setCookie("SUID", user.username, { path: "/" })
       router.push("/")
         .then(() => alert("login success"))
     }
   }, [user])
+
 
   const onChangeUsername = useCallback((e) => {
     console.log(e.target.value)

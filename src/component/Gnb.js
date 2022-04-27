@@ -1,8 +1,46 @@
 import Link from "next/link"
+import { useRouter } from "next/router";
+import { useEffect } from "react";
+import { useCookies } from "react-cookie";
+import { useDispatch, useSelector } from "react-redux";
 import { Segment, Button } from 'semantic-ui-react'
 import styles from '../../styles/Gnb.module.css';
 
 const Gnb = () => {
+
+  const router = useRouter();
+
+  const dispatch = useDispatch();
+
+  const [cookies, setCookie] = useCookies(['user']);
+
+  const { user } = useSelector(state => state.userReducer)
+
+  const onClickLogout = () => {
+    if (user.username !== undefined) {
+      setCookie("SUID", undefined, { path: "/" })
+      router.push("/")
+    }
+  }
+
+
+  const LoginButton = () => {
+    if (user.username !== undefined) {
+      return (
+        <Button onClick={onClickLogout}>
+          로그아웃
+        </Button>
+      )
+    }
+    else {
+      return (
+        <Button href={"/login"}>
+          로그인
+        </Button>
+      )
+    }
+  }
+
   return (
     <div>
       <div className={styles.navbarWeb} >
@@ -25,11 +63,7 @@ const Gnb = () => {
             <Link href="/board">게시판</Link>
           </li>
         </ul>
-        <Button href={"/login"}>
-          <div>
-            로그인
-          </div>
-        </Button>
+        <LoginButton />
       </div>
     </div>
   )
