@@ -47,5 +47,19 @@
 .pintWide {
   display: flex;
   justify-content: space-between;
-  align-items: center
+  align-items: center;
+  background: #131624;
+}
+
+.bettingPoint {
+  display: flex;
+  flex: 1;
+  margin-left: 10px;
+}
+
+.rewardPoint {
+  display: flex;
+  flex: 1;
+  justify-content: flex-end;
+  margin-right: 10px;
 }
