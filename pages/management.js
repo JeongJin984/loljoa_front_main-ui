@@ -1,5 +1,5 @@
 import Axios from 'axios';
-import ManagementLine from '../src/component/ManagementLine';
+import ManagementLine from '../component/ManagementLine';
 import wrapper from "../src/store/store-wrapper";
 import { END } from "redux-saga";
 import { useDispatch, useSelector } from 'react-redux';

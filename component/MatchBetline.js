@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import styles from '../../styles/Match.Betline.module.css';
+import styles from '../styles/Match.Betline.module.css';
 import { useDispatch, useSelector } from "react-redux";
-import { teamSelectRequest, TEAM_SELECT_REQUEST, addTeamData, DELETE_TEAM_DATA } from '../../config/event/eventName/matchEvent';
+import { teamSelectRequest, TEAM_SELECT_REQUEST, addTeamData, DELETE_TEAM_DATA } from '../config/event/eventName/matchEvent';
 
 const MatchBetline = ({ matchData }) => {
 

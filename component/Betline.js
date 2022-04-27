@@ -1,10 +1,10 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import styles from '../../styles/ManagementLine.module.css';
+import styles from '../styles/Betline.module.css';
 import { useDispatch, useSelector } from "react-redux";
 import {
   addTeamData, BETTING_REQUEST,
-  GET_GAME_DATA_REQUEST, UPDATE_GAME_DATA_REQUEST
-} from '../../config/event/eventName/matchEvent';
+  GET_GAME_DATA_REQUEST,
+} from '../config/event/eventName/matchEvent';
 import { Accordion } from 'semantic-ui-react'
 
 const Betline = ({ matchData }) => {
@@ -15,7 +15,7 @@ const Betline = ({ matchData }) => {
   const [point, setPoint] = useState('0')
 
   const { game } = useSelector(state => state.matchReducer)
-  const { user } = useSelector(state => state.userReducer)
+  const { user, bettingGameList} = useSelector(state => state.userReducer)
 
   const onChangePoint = useCallback((e) => {
     setPoint(e.target.value)
@@ -30,6 +30,9 @@ const Betline = ({ matchData }) => {
         gameId: gameId,
         accountId: user.accountId,
         point: parseInt(point)
+      },
+      plus: {
+        gameId
       }
     })
   }, [user, point])
@@ -80,7 +83,8 @@ const Betline = ({ matchData }) => {
               <div className={styles.betlineDate}>{item.startTime}</div>
             </div>
           </Accordion.Title>
-          {item.details && item.details[0] ?
+          {
+            item.details && item.details[0] ?
             <Accordion.Content active={activeIndex === i}>
               <div className={styles.dataWide}>
                 <div className={styles.Background}>
@@ -111,18 +115,23 @@ const Betline = ({ matchData }) => {
               </div>
               <div className={styles.dataWide}>
                 <div className={styles.Background}>
-                  <div className={styles.pointBetting}>
-                    < a className={styles.bettingButton} onClick={onClickBetting(item.id, item.details[0].gameId, item.details[0].choices[0].choiceId)} >
-                      {item.details[0].choices[0].name} 배팅
-                    </a >
-                    <div className={styles.pointInput}>
-                      <div>사용 가능POINT : {user.point}</div>
-                      <input type='number' onChange={onChangePoint} value={point} />
-                    </div>
-                    <a className={styles.bettingButton} onClick={onClickBetting(item.id, item.details[0].gameId, item.details[0].choices[1].choiceId)}>
-                      {item.details[0].choices[1].name} 배팅
-                    </a>
-                  </div>
+                  <bettingSwitch item={item} />
+                  {
+                    bettingGameList.includes(item.details[0].gameId)
+                      ? <div className={styles.bettingDone}>경기 배팅 완료</div> :
+                      <div className={styles.pointBetting}>
+                        < a className={styles.bettingButton} onClick={onClickBetting(item.id, item.details[0].gameId, item.details[0].choices[0].choiceId)} >
+                          {item.details[0].choices[0].name} 배팅
+                        </a >
+                        <div className={styles.pointInput}>
+                          <div>사용 가능POINT : {user.point}</div>
+                          <input type='number' onChange={onChangePoint} value={point} />
+                        </div>
+                        <a className={styles.bettingButton} onClick={onClickBetting(item.id, item.details[0].gameId, item.details[0].choices[1].choiceId)}>
+                          {item.details[0].choices[1].name} 배팅
+                        </a>
+                      </div>
+                  }
                 </div>
               </div>
             </Accordion.Content> :

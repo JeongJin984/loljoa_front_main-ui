@@ -2,8 +2,8 @@ import Axios from 'axios';
 import React, { useState } from "react";
 import { Button, Icon } from "semantic-ui-react"
 import wrapper from "../src/store/store-wrapper";
-import MatchBetLine from "../src/component/MatchBetline";
-import BettingItem from "../src/component/BettingItem";
+import MatchBetLine from "../component/MatchBetline";
+import BettingItem from "../component/BettingItem";
 import { END } from "redux-saga";
 import { useSelector } from "react-redux";
 import { CALL_MATCH_REQUEST } from '../config/event/eventName/matchEvent';

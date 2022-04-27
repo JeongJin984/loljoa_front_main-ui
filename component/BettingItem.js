@@ -1,6 +1,6 @@
 import Axios from 'axios';
-import wrapper from "../store/store-wrapper";
-import { TEAM_SELECT_REQUEST, teamSelectRequest } from '../../config/event/eventName/matchEvent';
+import wrapper from "../src/store/store-wrapper";
+import { TEAM_SELECT_REQUEST, teamSelectRequest } from '../config/event/eventName/matchEvent';
 import { useDispatch, useSelector } from "react-redux";
 
 
