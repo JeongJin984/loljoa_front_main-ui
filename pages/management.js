@@ -27,7 +27,6 @@ const Management = () => {
   )
 }
 
-
 export const getServerSideProps = wrapper.getServerSideProps(store =>
   async ({ req, res, ...etc }) => {
     const cookie = req ? req.headers.cookie : '';

@@ -21,6 +21,7 @@ const userReducer = (state = initialState, action) => {
       case BETTING_SUCCESS:
         draft.user.bettingData.push(action.data)
         draft.bettingGameList.push(action.plus.gameId)
+        draft.user.point -= action.plus.point
         break
       case CANCEL_BETTING_SUCCESS:
         let index = -1
@@ -30,6 +31,7 @@ const userReducer = (state = initialState, action) => {
           }
         })
         draft.user.bettingData.splice(index, 1)
+        draft.user.point += action.plus.point
         break
       default:
         break;

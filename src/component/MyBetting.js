@@ -8,7 +8,7 @@ const MyBetting = (userData) => {
 
   const { user } = useSelector(state => state.userReducer)
 
-  const onClickCancel = useCallback((choiceId) => () => {
+  const onClickCancel = useCallback((choiceId, point) => () => {
     dispatch({
       type: CANCEL_BETTING_REQUEST,
       params: {
@@ -16,7 +16,8 @@ const MyBetting = (userData) => {
         accountId: user.accountId
       },
       plus: {
-        choiceId
+        choiceId,
+        point: parseInt(point)
       }
     })
   }, [userData])
@@ -41,7 +42,7 @@ const MyBetting = (userData) => {
             <div className={styles.bettingPoint}>{item.point}P 배팅</div>
             <div className={styles.rewardPoint}>{Math.round(Number(item.point) * Number(item.odd))}P 예상</div>
           </div>
-          <button onClick={onClickCancel(item.choiceId)}>취소</button>
+          <button onClick={onClickCancel(item.choiceId, item.point)}>취소</button>
         </div>
       ))}
     </div>
