@@ -22,24 +22,29 @@ const Betline = ({ matchData }) => {
   }, [point])
 
   const onClickBetting = useCallback((leagueId, gameId, choiceId) => () => {
-    if (user.point - point > 0) {
-      dispatch({
-        type: BETTING_REQUEST,
-        params: {
-          leagueId: leagueId,
-          choiceId: choiceId,
-          gameId: gameId,
-          accountId: user.accountId,
-          point: parseInt(point)
-        },
-        plus: {
-          gameId,
-          point: parseInt(point)
-        }
-      })
+    if (point < 100) {
+      alert("100P 이상 배팅해 주세요.")
     }
     else {
-      alert('사용 가능 포인트 초과')
+      if (user.point - point > -1) {
+        dispatch({
+          type: BETTING_REQUEST,
+          params: {
+            leagueId: leagueId,
+            choiceId: choiceId,
+            gameId: gameId,
+            accountId: user.accountId,
+            point: parseInt(point)
+          },
+          plus: {
+            gameId,
+            point: parseInt(point)
+          }
+        })
+      }
+      else {
+        alert('사용 가능 포인트 초과')
+      }
     }
   }, [user, point])
 
@@ -146,7 +151,7 @@ const Betline = ({ matchData }) => {
                 </div>
               </Accordion.Content> :
               <Accordion.Content active={activeIndex === i}>
-                <div>베팅이 완료되었습니다</div>
+                <div></div>
               </Accordion.Content>
           }
         </span>
