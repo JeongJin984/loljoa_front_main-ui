@@ -3,7 +3,7 @@ import styles from '../../styles/Betline.module.css';
 import { useDispatch, useSelector } from "react-redux";
 import {
   addTeamData, BETTING_REQUEST,
-  GET_GAME_DATA_REQUEST, UPDATE_GAME_DATA_REQUEST
+  GET_GAME_DATA_REQUEST,
 } from '../../config/event/eventName/matchEvent';
 import { Accordion } from 'semantic-ui-react'
 
@@ -76,7 +76,7 @@ const Betline = ({ matchData }) => {
                 <div className={styles.rightMatch}>
                   <div className={styles.rightOdds} >{item.rightOdds}</div>
                   <div className={styles.rightTeam}>{item.leagueName.split("vs")[1]}</div>
-                  <img src={"/image/" + item.leagueName.split("vs")[1] + ".png"} style={{ height: "25px" }} />
+                  <img src={"image/" + item.leagueName.split("vs")[1] + ".png"} style={{ height: "25px" }} />
                 </div>
               </div>
               <div className={styles.betlineDate}>{item.startTime}</div>

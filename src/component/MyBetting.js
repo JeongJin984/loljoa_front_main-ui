@@ -30,7 +30,7 @@ const MyBetting = (userData) => {
             <div>{item.leftTeam} 대 {item.rightTeam}</div>
           </div>
           <div className={styles.predictWide}>
-            <img className={styles.logo} src={"/image/" + item.choice + ".png"} />
+            <img className={styles.logo} src={"/" + item.choice + ".png"} />
             <div className={styles.choice}>
               <div style={{ display: "flex", fontSize: "20px" }}>{item.choice}</div>
               <div style={{ display: "flex", fontSize: "10px", color: "#F6BE23" }}>예측</div>
