@@ -34,6 +34,10 @@ export const CANCEL_BETTING_REQUEST = "CANCEL_BETTING_REQUEST";
 export const CANCEL_BETTING_SUCCESS = "CANCEL_BETTING_SUCCESS";
 export const CANCEL_BETTING_FAILURE = "CANCEL_BETTING_FAILURE";
 
+export const SELECT_WINNER_REQUEST = "SELECT_WINNER_REQUEST";
+export const SELECT_WINNER_SUCCESS = "SELECT_WINNER_SUCCESS";
+export const SELECT_WINNER_FAILURE = "SELECT_WINNER_FAILURE";
+
 export const splitTeamName = data => ({ type: SPLIT_TEAM_NAME, payload: data })
 
 export const addTeamData = data => ({ type: ADD_TEAM_DATA, payload: data })
