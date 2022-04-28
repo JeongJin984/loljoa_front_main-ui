@@ -13,7 +13,8 @@ const MyBetting = (userData) => {
       type: CANCEL_BETTING_REQUEST,
       params: {
         choiceId,
-        accountId: user.accountId
+        accountId: user.accountId,
+        gameId
       },
       plus: {
         gameId,

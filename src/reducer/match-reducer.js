@@ -34,7 +34,7 @@ const matchReducer = (state = initialState, action) => {
             if(gameData.gameId === action.plus.gameId) {
               gameData.choices.map(c => {
                 if(c.choiceId === action.plus.choiceId) {
-                  c.totalPoint += action.plus.point
+                  c.totalPoint -= action.plus.point
                 }
               })
             }
