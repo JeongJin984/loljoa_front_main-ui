@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import styles from '../../styles/ManagementLine.module.css';
+import styles from '../../styles/ManagementLine.module.css?after';
 import { useDispatch, useSelector } from "react-redux";
 import { GET_GAME_DATA_REQUEST } from '../../config/event/eventName/matchEvent';
 import { Accordion } from 'semantic-ui-react'
