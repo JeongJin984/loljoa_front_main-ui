@@ -30,7 +30,7 @@ const matchReducer = (state = initialState, action) => {
         break;
       case BETTING_CANCELED:
         draft.matchData.map(league => {
-          league.details.map(gameData => {
+          league.details && league.details.map(gameData => {
             if(gameData.gameId === action.plus.gameId) {
               gameData.choices.map(c => {
                 if(c.choiceId === action.plus.choiceId) {
