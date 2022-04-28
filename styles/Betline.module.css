@@ -17,6 +17,17 @@
     font-size: 10px;
 }
 
+.tournamentClick {
+    display: flex;
+    align-items: center;
+    flex: 1 12%;
+    color: #42E0E4;
+    background-color: #20253d;
+    background: linear-gradient(0.25turn, #ffd500, #384360);
+    padding-left: 15px;
+    font-size: 10px;
+}
+
 .betlineDate {
     display: flex;
     align-items: center;
@@ -25,6 +36,17 @@
     text-align: right;
     color: #fff;
     background: linear-gradient(0.25turn, #384360, #20253d);
+    padding-right: 15px;
+}
+
+.betlineDateClick {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex: 1 12%;
+    text-align: right;
+    color: #fff;
+    background: linear-gradient(0.25turn, #384360, #ffd500);
     padding-right: 15px;
 }
 

@@ -74,10 +74,17 @@ const Betline = ({ matchData }) => {
             index={0}
           >
             <div className={styles.betlineWide} onClick={handleAccordion(i, item.id)}>
-              <div className={styles.tournament}>
-                <img src={'/image/LCK.png'} style={{ height: "25px" }} />
-                <div>LOL Champions Korea</div>
-              </div>
+              {
+                bettingGameList.includes(item.details && item.details[0].gameId)
+                  ? <div className={styles.tournamentClick}>
+                    <img src={'/image/LCK.png'} style={{ height: "25px" }} />
+                    <div>LOL Champions Korea</div>
+                  </div>
+                  : <div className={styles.tournament}>
+                    <img src={'/image/LCK.png'} style={{ height: "25px" }} />
+                    <div>LOL Champions Korea</div>
+                  </div>
+              }
               <div className={styles.matchup}>
                 <div className={styles.leftMatch}>
                   <img src={"/image/" + item.leagueName.split("vs")[0] + ".png"} style={{ height: "25px" }} />
@@ -91,7 +98,11 @@ const Betline = ({ matchData }) => {
                   <img src={"image/" + item.leagueName.split("vs")[1] + ".png"} style={{ height: "25px" }} />
                 </div>
               </div>
-              <div className={styles.betlineDate}>{item.startTime}</div>
+              {
+                bettingGameList.includes(item.details && item.details[0].gameId)
+                  ? <div className={styles.betlineDateClick}>{item.startTime}</div>
+                  : <div className={styles.betlineDate}>{item.startTime}</div>
+              }
             </div>
           </Accordion.Title>
           {
@@ -99,6 +110,7 @@ const Betline = ({ matchData }) => {
               <Accordion.Content active={activeIndex === i}>
                 <div className={styles.dataWide}>
                   <div className={styles.Background}>
+
                     <div className={styles.leftDetailData}>
                       <div className={styles.leftTotalPoint}>총 포인트 {item.details[0].choices[0].totalPoint}</div>
                       <div className={styles.leftData}>
@@ -132,8 +144,8 @@ const Betline = ({ matchData }) => {
                         ? <div className={styles.bettingDone}>경기 배팅 완료</div> :
                         <div className={styles.pointBetting}>
                           < a className={styles.bettingButton}
-                              style={{cursor: "pointer"}}
-                              onClick={onClickBetting(item.id, item.details[0].gameId, item.details[0].choices[0].choiceId)} >
+                            style={{ cursor: "pointer" }}
+                            onClick={onClickBetting(item.id, item.details[0].gameId, item.details[0].choices[0].choiceId)} >
                             {item.details[0].choices[0].name} 배팅
                           </a >
                           <div className={styles.pointInput}>
@@ -141,8 +153,8 @@ const Betline = ({ matchData }) => {
                             <input type='number' onChange={onChangePoint} value={point} />
                           </div>
                           <a className={styles.bettingButton}
-                             style={{cursor: "pointer"}}
-                             onClick={onClickBetting(item.id, item.details[0].gameId, item.details[0].choices[1].choiceId)}>
+                            style={{ cursor: "pointer" }}
+                            onClick={onClickBetting(item.id, item.details[0].gameId, item.details[0].choices[1].choiceId)}>
                             {item.details[0].choices[1].name} 배팅
                           </a>
                         </div>
