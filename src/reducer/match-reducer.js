@@ -22,7 +22,7 @@ const matchReducer = (state = initialState, action) => {
       case GET_GAME_DATA_SUCCESS:
         let index = -1;
         draft.matchData.map((v, i) => {
-          if(v.id === action.plus.leagueId) {
+          if (v.id === action.plus.leagueId) {
             index = i
           }
         })
@@ -30,10 +30,10 @@ const matchReducer = (state = initialState, action) => {
         break;
       case BETTING_CANCELED:
         draft.matchData.map(league => {
-          league.details.map(gameData => {
-            if(gameData.gameId === action.plus.gameId) {
+          league.details?.map(gameData => {
+            if (gameData.gameId === action.plus.gameId) {
               gameData.choices.map(c => {
-                if(c.choiceId === action.plus.choiceId) {
+                if (c.choiceId === action.plus.choiceId) {
                   c.totalPoint += action.plus.point
                 }
               })
