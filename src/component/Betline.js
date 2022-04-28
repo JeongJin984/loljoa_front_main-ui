@@ -126,14 +126,18 @@ const Betline = ({ matchData }) => {
                       bettingGameList.includes(item.details[0].gameId)
                         ? <div className={styles.bettingDone}>경기 배팅 완료</div> :
                         <div className={styles.pointBetting}>
-                          < a className={styles.bettingButton} onClick={onClickBetting(item.id, item.details[0].gameId, item.details[0].choices[0].choiceId)} >
+                          < a className={styles.bettingButton}
+                              style={{cursor: "pointer"}}
+                              onClick={onClickBetting(item.id, item.details[0].gameId, item.details[0].choices[0].choiceId)} >
                             {item.details[0].choices[0].name} 배팅
                           </a >
                           <div className={styles.pointInput}>
                             <div>사용 가능POINT : {user.point}</div>
                             <input type='number' onChange={onChangePoint} value={point} />
                           </div>
-                          <a className={styles.bettingButton} onClick={onClickBetting(item.id, item.details[0].gameId, item.details[0].choices[1].choiceId)}>
+                          <a className={styles.bettingButton}
+                             style={{cursor: "pointer"}}
+                             onClick={onClickBetting(item.id, item.details[0].gameId, item.details[0].choices[1].choiceId)}>
                             {item.details[0].choices[1].name} 배팅
                           </a>
                         </div>
