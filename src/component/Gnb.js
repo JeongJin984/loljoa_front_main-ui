@@ -27,9 +27,19 @@ const Gnb = () => {
   const LoginButton = () => {
     if (user.username !== undefined) {
       return (
-        <Button onClick={onClickLogout}>
-          로그아웃
-        </Button>
+        <div style={{ display: "flex" }}>
+          <div style={{ flex: 1, color: "white" }}>
+            <div>
+              ID : {user.username}
+            </div>
+            <div>
+              POINT : {user.point}
+            </div>
+          </div>
+          <Button onClick={onClickLogout}>
+            로그아웃
+          </Button>
+        </div>
       )
     }
     else {
