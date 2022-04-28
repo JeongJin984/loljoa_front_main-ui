@@ -3,7 +3,7 @@ import {
   CALL_MATCH_SUCCESS,
   CALL_MATCH_FAILURE,
   SPLIT_TEAM_NAME,
-  GET_GAME_DATA_SUCCESS, BETTING_SUCCESS
+  GET_GAME_DATA_SUCCESS, BETTING_SUCCESS, BETTING_CANCELED
 } from "../../config/event/eventName/matchEvent"
 const initialState = {
   matchData: [],
@@ -28,6 +28,18 @@ const matchReducer = (state = initialState, action) => {
         })
         draft.matchData[index].details = action.data
         break;
+      case BETTING_CANCELED:
+        draft.matchData.map(league => {
+          league.details.map(gameData => {
+            if(gameData.gameId === action.plus.gameId) {
+              gameData.choices.map(c => {
+                if(c.choiceId === action.plus.choiceId) {
+                  c.totalPoint += action.plus.point
+                }
+              })
+            }
+          })
+        })
       // case SPLIT_TEAM_NAME:
       //   draft.matchData
       default:
