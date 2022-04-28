@@ -40,6 +40,7 @@ const matchReducer = (state = initialState, action) => {
             }
           })
         })
+        break
       // case SPLIT_TEAM_NAME:
       //   draft.matchData
       default:
