@@ -22,20 +22,25 @@ const Betline = ({ matchData }) => {
   }, [point])
 
   const onClickBetting = useCallback((leagueId, gameId, choiceId) => () => {
-    dispatch({
-      type: BETTING_REQUEST,
-      params: {
-        leagueId: leagueId,
-        choiceId: choiceId,
-        gameId: gameId,
-        accountId: user.accountId,
-        point: parseInt(point)
-      },
-      plus: {
-        gameId,
-        point: parseInt(point)
-      }
-    })
+    if (user.point - point > 0) {
+      dispatch({
+        type: BETTING_REQUEST,
+        params: {
+          leagueId: leagueId,
+          choiceId: choiceId,
+          gameId: gameId,
+          accountId: user.accountId,
+          point: parseInt(point)
+        },
+        plus: {
+          gameId,
+          point: parseInt(point)
+        }
+      })
+    }
+    else {
+      alert('사용 가능 포인트 초과')
+    }
   }, [user, point])
 
   const handleAccordion = useCallback((index, leagueId) => (e) => {
@@ -59,6 +64,7 @@ const Betline = ({ matchData }) => {
       {matchData.map((item, i) => (
         <span key={item.id}>
           <Accordion.Title
+            className={styles.accordion}
             active={activeIndex === i}
             index={0}
           >
