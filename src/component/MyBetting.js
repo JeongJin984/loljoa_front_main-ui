@@ -17,6 +17,7 @@ const MyBetting = (userData) => {
         accountId: user.accountId
       },
       plus: {
+        gameId,
         choiceId,
         point: parseInt(point)
       }
