@@ -32,7 +32,7 @@ const Gnb = () => {
             <div>
               ID : {user.username}
             </div>
-            <div>
+            <div style={{ marginRight: "5px" }}>
               POINT : {user.point}
             </div>
           </div>
