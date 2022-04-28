@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import styles from '../../styles/ManagementLine.module.css?after';
 import { useDispatch, useSelector } from "react-redux";
-import { GET_GAME_DATA_REQUEST } from '../../config/event/eventName/matchEvent';
+import {GET_GAME_DATA_REQUEST, SELECT_WINNER_REQUEST} from '../../config/event/eventName/matchEvent';
 import { Accordion } from 'semantic-ui-react'
 
 const Betline = ({ matchData }) => {
@@ -23,6 +23,15 @@ const Betline = ({ matchData }) => {
     }
   }, [activeIndex])
 
+  const onClickSelectWinner = useCallback((gameId, choiceId) => () => {
+    dispatch({
+      type: SELECT_WINNER_REQUEST,
+      params: {
+        gameId,
+        choiceId
+      }
+    })
+  }, [])
 
   return (
     <Accordion>
@@ -87,15 +96,15 @@ const Betline = ({ matchData }) => {
                 <div className={styles.Background}>
                   <div className={styles.pointBetting}>
                     < a className={styles.bettingButton}
-                    // onClick={ }
+                        onClick={onClickSelectWinner(item.details[0].gameId, item.details[0].choices[0].choiceId)}
                     >
                       {item.details[0].choices[0].name} 배팅
-                    </a >
+                    </a>
                     <div className={styles.winner}>
                       <div>승리 팀 선택</div>
                     </div>
                     <a className={styles.bettingButton}
-                    // onClick={ }
+                       onClick={onClickSelectWinner(item.details[0].gameId, item.details[0].choices[1].choiceId)}
                     >
                       {item.details[0].choices[1].name} 배팅
                     </a>
