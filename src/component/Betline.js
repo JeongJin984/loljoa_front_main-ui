@@ -32,7 +32,8 @@ const Betline = ({ matchData }) => {
         point: parseInt(point)
       },
       plus: {
-        gameId
+        gameId,
+        point: parseInt(point)
       }
     })
   }, [user, point])
