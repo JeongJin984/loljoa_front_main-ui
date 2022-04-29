@@ -61,9 +61,6 @@ const Gnb = () => {
         </Link>
         <ul className={styles.links}>
           <li className={styles.navlink}>
-            <Link href="/betting">경기 베팅</Link>
-          </li>
-          <li className={styles.navlink}>
             <Link href="/schedule">경기 일정</Link>
           </li>
           <li className={styles.navlink}>
