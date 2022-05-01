@@ -51,7 +51,7 @@ const MyBetting = (userData) => {
             <div className={styles.odds}>{item.odd}</div>
           </div>
           <div className={styles.pintWide}>
-            <div className={styles.bettingPoint}>{item.point}P 배팅</div>
+            <div className={styles.bettingPoint}>{item.point}P 베팅</div>
             <div className={styles.rewardPoint}>{Math.round(Number(item.point) * Number(item.odd))}P 예상</div>
           </div>
           <button onClick={onClickCancel(item.gameId, item.choiceId, item.point)}>취소</button>

@@ -23,7 +23,7 @@ const Betline = ({ matchData }) => {
 
   const onClickBetting = useCallback((leagueId, gameId, choiceId) => () => {
     if (point < 100) {
-      alert("100P 이상 배팅해 주세요.")
+      alert("100P 이상 베팅해 주세요.")
     }
     else {
       if (user.point - point > -1) {
@@ -114,7 +114,7 @@ const Betline = ({ matchData }) => {
                     <div className={styles.leftDetailData}>
                       <div className={styles.leftTotalPoint}>총 포인트 {item.details[0].choices[0].totalPoint}</div>
                       <div className={styles.leftData}>
-                        최대 배팅 : {item.details[0].choices[0].biggestPoint}
+                        최대 베팅 : {item.details[0].choices[0].biggestPoint}
                         <div className={styles.leftOdds}>
                           {
                             Math.round(item.details[0].choices[0].odd * 100) / 100
@@ -130,7 +130,7 @@ const Betline = ({ matchData }) => {
                             Math.round(item.details[0].choices[1].odd * 100) / 100
                           }
                         </div>
-                        {item.details[0].choices[1].biggestPoint} : 최대 배팅
+                        {item.details[0].choices[1].biggestPoint} : 최대 베팅
                       </div>
                       <div className={styles.rightTotalPoint}>{item.details && item.details[0].choices[1].totalPoint} 총 포인트</div>
                     </div>
@@ -141,12 +141,12 @@ const Betline = ({ matchData }) => {
                     <bettingSwitch item={item} />
                     {
                       bettingGameList.includes(item.details[0].gameId)
-                        ? <div className={styles.bettingDone}>경기 배팅 완료</div> :
+                        ? <div className={styles.bettingDone}>경기 베팅 완료</div> :
                         <div className={styles.pointBetting}>
                           < a className={styles.bettingButton}
                             style={{ cursor: "pointer" }}
                             onClick={onClickBetting(item.id, item.details[0].gameId, item.details[0].choices[0].choiceId)} >
-                            {item.details[0].choices[0].name} 배팅
+                            {item.details[0].choices[0].name} 베팅
                           </a >
                           <div className={styles.pointInput}>
                             <div>사용 가능POINT : {user.point}</div>
@@ -155,7 +155,7 @@ const Betline = ({ matchData }) => {
                           <a className={styles.bettingButton}
                             style={{ cursor: "pointer" }}
                             onClick={onClickBetting(item.id, item.details[0].gameId, item.details[0].choices[1].choiceId)}>
-                            {item.details[0].choices[1].name} 배팅
+                            {item.details[0].choices[1].name} 베팅
                           </a>
                         </div>
                     }
@@ -163,7 +163,7 @@ const Betline = ({ matchData }) => {
                 </div>
               </Accordion.Content> :
               <Accordion.Content active={activeIndex === i}>
-                <div></div>
+                <div>베팅이 완료 되었습니다.</div>
               </Accordion.Content>
           }
         </span>

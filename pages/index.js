@@ -1,4 +1,3 @@
-
 import Axios from 'axios';
 import Betline from '../src/component/Betline';
 import wrapper from "../src/store/store-wrapper";
@@ -28,7 +27,7 @@ const Home = () => {
       <div style={{ color: "white", flex: 1, backgroundColor: "#242737" }}>
 
         <div style={{ display: "flex", flexDirection: "column", textAlign: "center", margin: "10px" }}>
-          <div style={{ fontSize: "22px", marginBottom: "10px" }}>내 배팅</div>
+          <div style={{ fontSize: "22px", marginBottom: "10px" }}>내 베팅</div>
           <MyBetting user={user} />
         </div>
       </div>

@@ -15,9 +15,7 @@ const Management = () => {
     <div style={{ display: "flex", background: "#f6f8fa" }}>
       <div style={{ flex: 4 }}>
         <div style={{ textAlign: "center", margin: "30px" }}>
-          <h2>League of Legends
-            /
-            Most Popular</h2>
+          <h2>경기 결과</h2>
         </div>
         <div style={{ textAlign: "center", margin: "30px" }}>
           <ManagementLine matchData={matchData} />
